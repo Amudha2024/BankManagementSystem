@@ -1,0 +1,62 @@
+﻿<Window x:Class="BankManagementSystem.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankManagementSystem"
+        xmlns:vm="clr-namespace:BankManagementSystem.ViewModel"
+        xmlns:components="clr-namespace:BankManagementSystem.View.Components"
+        mc:Ignorable="d"
+        Background="LightCyan"
+        Title="Login" Height="250" Width="250" WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+        <vm:LoginViewModel x:Key="Login"/>
+    </Window.Resources>
+    
+    <StackPanel DataContext="{StaticResource Login}" Margin="10">
+        <Label
+            Content="UserName"
+            Style="{StaticResource LabelStyle}"/>
+        <TextBox Text="{Binding LoginModel.UserName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+
+        <Label
+            Content="Password"
+            Style="{StaticResource LabelStyle}"/>
+
+        <components:PassWordBoxControl
+            Password="{Binding LoginModel.PassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+            ToolTip=""/>
+
+        <Button
+            Command="{Binding LoginCommand}"
+            CommandParameter="{Binding LoginModel.UserName}"
+            Content="Login"
+            Margin="0,10"
+            Style="{StaticResource ButtonStyle}"/>
+        
+        <Separator Margin="0,5,0,0"
+                   Style="{StaticResource SepratorStyle }"/>
+        
+        <Grid Margin="0,5" HorizontalAlignment="Center">
+            
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+           <TextBlock
+           Grid.Column="0"
+           Text="New User ?"
+           HorizontalAlignment="Left"/>
+
+            <Button Content="Register here"
+                    Command="{Binding SignUpCommand}"
+                    Margin="10,0,0,0"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    Foreground="Red"
+                    BorderThickness="0"/>
+        </Grid>
+    </StackPanel>
+</Window>
