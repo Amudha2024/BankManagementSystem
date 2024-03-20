@@ -6,18 +6,19 @@
         xmlns:local="clr-namespace:BankManagementSystem.View"
         xmlns:vm="clr-namespace:BankManagementSystem.ViewModel"
         mc:Ignorable="d"
-        Title="UpdateUserDetailWindow" Height="450" Width="800">
+        Title="UpdateUserDetailWindow" Height="600" Width="800">
 
     <Window.Resources>
-        <vm:UpdateUserDetailViewModel x:Key="UserDetailVm"/>
+        <ResourceDictionary>
+            <vm:UpdateUserDetailViewModel x:Key="UserDetailVm"/>
+        </ResourceDictionary>
     </Window.Resources>
     
     <StackPanel
         DataContext="{StaticResource UserDetailVm}"
-        Margin="10">
+        Margin="20">
        
         <Label
-            Content="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Foreground="Red"/>
         <Separator
             Background="Black"/>
@@ -25,54 +26,47 @@
             Content="Name"
             Style ="{StaticResource LabelStyle}"/>
         <TextBox
-            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Label
-            Content="Password"
-            Style ="{StaticResource LabelStyle}"/>
-        <TextBox
-            Text="{Binding PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Label
+            Text="{Binding UpdateUserDetail.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+         <Label
             Content="Address"
             Style ="{StaticResource LabelStyle}"/>
         <TextBox
-            Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            Text="{Binding UpdateUserDetail.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Label
             Content="State"
             Style ="{StaticResource LabelStyle}"/>
         <TextBox
-            Text="{Binding State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            Text="{Binding UpdateUserDetail.State, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Label
             Content="Country"
             Style ="{StaticResource LabelStyle}"/>
         <TextBox
-            Text="{Binding Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            Text="{Binding UpdateUserDetail.Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Label
             Content="Email ID"
             Style ="{StaticResource LabelStyle}"/>
         <TextBox
-            Text="{Binding EmailId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            Text="{Binding UpdateUserDetail.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Label
             Content="PAN Number"
             Style ="{StaticResource LabelStyle}"/>
         <TextBox
-            Text="{Binding PAN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            Text="{Binding UpdateUserDetail.PAN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Label
             Content="Contact Number"
             Style ="{StaticResource LabelStyle}"/>
         <TextBox
-            Text="{Binding ContactNo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            Text="{Binding UpdateUserDetail.ContactNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Label
             Content="Date Of Birth"
             Style ="{StaticResource LabelStyle}"/>
         <DatePicker
             SelectedDateFormat="Short"
-            SelectedDate="{Binding DOB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            SelectedDate="{Binding UpdateUserDetail.DOB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Label
             Content="Account Type"
             Style ="{StaticResource LabelStyle}"/>
-        <Label
-            Content="{Binding AccountType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            Style="{StaticResource LabelStyle}"/>
+        <ComboBox IsEditable="False" SelectedItem="{Binding UpdateUserDetail.AccountType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Button
             Command="{Binding UpdateUserDetailCommand}"

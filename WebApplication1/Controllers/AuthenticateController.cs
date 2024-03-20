@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using BankManagementApi.Data;
 using BankManagementApi.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankManagementApi.Controllers
 {
@@ -33,7 +34,6 @@ namespace BankManagementApi.Controllers
                Country=model.Country,
                Dob=model.Dob,
                ContactNumber=model.ContactNumber,
-               //Role=model.Role,
 
            };
             try
@@ -95,5 +95,50 @@ namespace BankManagementApi.Controllers
                 return false;
             }
         }
+
+        [HttpGet("GetUserDetail/{userName}")]
+        public async Task<NewUserDetails> GetUserDetails(string userName)
+        {
+            //return await appData.LoanDetails?.FirstOrDefaultAsync(x => x.LoanId == loanId);
+            return await appData.UserDetails.FirstOrDefaultAsync(x => x.UserName == userName);
+        }
+
+        [HttpPost("UpdateUserDetail")]
+        public async Task<bool> UpdateUSerDetail([FromBody] UserDetailsDto model)
+        {
+            NewUserDetails detail = new NewUserDetails()
+            {
+                Name = model.Name,
+                Email = model.Email,
+                UserName = model.UserName,
+                Address = model.Address,
+                State = model.State,
+                AccountType = model.AccountType,
+                PAN = model.PAN,
+                Country = model.Country,
+                Dob = model.Dob,
+                ContactNumber = model.ContactNumber,
+
+            };
+            try
+            {
+                var result = await userManager.UpdateAsync(detail);
+                if (result.Succeeded)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                    //return result.Errors.FirstOrDefault().Description;
+                }
+            }
+            catch
+            {
+
+            }
+            return false;
+        }
+
     }
 }

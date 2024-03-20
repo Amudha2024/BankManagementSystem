@@ -3,9 +3,11 @@ using BankManagementSystem.Model.Service;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -109,7 +111,7 @@ namespace BankManagementSystem.ViewModel.Helpers
         {
             UpdateUserDetail userDetail;
 
-            string URL = BASE_URL + string.Format(GET_URL, userName);
+            string URL = BASE_URL + "GetUserDetail/" + userName;
 
             using (HttpClient httpClient = new HttpClient())
             {
@@ -118,20 +120,22 @@ namespace BankManagementSystem.ViewModel.Helpers
                 userDetail = JsonConvert.DeserializeObject<UpdateUserDetail>(json);
             };
 
-            //string agent;
-            //string URL = BASE_URL + POST_URL;
-
-            //using (HttpClient httpClient = new HttpClient())
-            //{
-            //    var response = await httpClient.PostAsJsonAsync(URL, userDetail, default);
-            //    var json = await response.Content.ReadAsStringAsync();
-            //    agent = json.ToString();
-            //}
-            //return agent;
-
             return userDetail;
         }
-      
+
+        public async Task<string> UpdateUserDetail(UpdateUserDetail userDetail)
+        {
+            string agent;
+            string URL = BASE_URL + "UpdateUserDetail";
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                var response = await httpClient.PutAsJsonAsync(URL, userDetail, default);
+                var json = await response.Content.ReadAsStringAsync();
+                agent = json.ToString();
+            }
+            return agent;
+        }
 
         public async Task<string> ApproveLoanStatus(LoanDetail loan)
         {
@@ -162,6 +166,5 @@ namespace BankManagementSystem.ViewModel.Helpers
             }
             return agent;
         }
-
     }
 }

@@ -54,7 +54,7 @@ namespace BankManagementSystem.ViewModel
                     UserName = LoginModel.UserName,
                     Password = LoginModel.PassWord
                 };
-            //GlobalVariable.UserName =  LoginModel.UserName;
+           // GlobalVariable.UserName =  LoginModel.UserName;
 
             DashBoardWindow win = new DashBoardWindow();
             win.ShowDialog();

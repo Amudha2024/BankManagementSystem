@@ -115,7 +115,7 @@
                 CanUserAddRows="False"
                 CanUserDeleteRows="False"
                 CanUserSortColumns="True"
-                
+                IsReadOnly="True"
                 ScrollViewer.CanContentScroll="True"                
                 BorderBrush="#000" 
                 BorderThickness="1" 
