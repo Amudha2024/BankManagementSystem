@@ -90,7 +90,7 @@ namespace BankManagementApi.Controllers
         }
 
         [HttpPost("UpdateUserDetail")]
-        public async Task<bool> UpdateUSerDetail([FromBody] UserDetailsDto model)
+        public async Task<bool> UpdateUserDetail([FromBody] UserDetailsDto model)
         {
             NewUserDetails detail = new NewUserDetails()
             {
