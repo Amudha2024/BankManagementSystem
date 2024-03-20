@@ -6,16 +6,14 @@
         xmlns:local="clr-namespace:BankManagementSystem.View"
         xmlns:vm="clr-namespace:BankManagementSystem.ViewModel"
         xmlns:components="clr-namespace:BankManagementSystem.View.Components"
-        mc:Ignorable="d"
-        Background="LightCyan"
-        Title="Create Your Account" Height="700" Width="600" WindowStartupLocation="CenterScreen">
+        mc:Ignorable="d" ResizeMode="NoResize" Title="Register Here"
+        Style="{StaticResource WindowStyle}" Height="680" Width="500" WindowStartupLocation="CenterScreen">
     
     <Window.Resources>
         <vm:SignUpViewModel x:Key="SignUpVm"/>
     </Window.Resources>
     
     <StackPanel Margin="10" >
-
         <Label
             Content="Name"
             Style="{StaticResource LabelStyle}"/>
@@ -77,32 +75,31 @@
             <ComboBoxItem IsSelected="True">Saving</ComboBoxItem>
         </ComboBox>
 
-        <CheckBox Content="Admin"  Foreground="Red"
-                      Background="Teal" BorderThickness="0" FontSize="25" Margin="15"
-                      Command="{Binding IsCheckCommand}"
-                      CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"/>
-
+        <Grid Margin="10" Height="100">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+       
         <Button 
             Command="{Binding CreateAccountCommand}"
-            Content="| Create Account |"
+            Content="Register"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}}"
-            Margin="5,10"
-            Width="Auto"
-            FontSize="20"
-            Height="50"
+            Style="{StaticResource ButtonStyle}"
+            Margin="150,0"
             BorderThickness="0"
             Background="LightCyan"
             Foreground="DarkBlue"
             FontWeight="Bold"/>
 
-        <Label
-            Content="{Binding SignUpModel.Warning,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+        <Label Grid.Row="1"
+            Content="fghgsgjghdjsdskjshdskjhsdkjdshkjdshksdskjs"
             Style="{StaticResource LabelStyle}"
             Foreground="Red"
             FontSize="14"
             FontWeight="Bold"
-            HorizontalAlignment="Center"/>
-
+            HorizontalAlignment="Center" Width="100"/>
+        </Grid>
     </StackPanel>
     
 </Window>

@@ -7,27 +7,31 @@
         xmlns:vm="clr-namespace:BankManagementSystem.ViewModel"
         xmlns:components="clr-namespace:BankManagementSystem.View.Components"
         mc:Ignorable="d"
-        Background="LightCyan"
-        Title="Login" Height="250" Width="250" WindowStartupLocation="CenterScreen">
+          Style="{StaticResource WindowStyle}"
+        Title="OnLine Login" Height="650" Width="500" WindowStartupLocation="CenterScreen" WindowState="Normal">
     
     <Window.Resources>
         <vm:LoginViewModel x:Key="Login"/>
     </Window.Resources>
-    
-    <StackPanel DataContext="{StaticResource Login}" Margin="10">
+
+    <StackPanel DataContext="{StaticResource Login}" Margin="100,180">
+        <Label Content="Login to Online Loan" Style="{StaticResource HeadingLabel}"/>
+
         <Label
             Content="UserName"
             Style="{StaticResource LabelStyle}"/>
-        <TextBox Text="{Binding LoginModel.UserName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Text="{Binding LoginModel.UserName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Height="25"/>
 
         <Label
             Content="Password"
             Style="{StaticResource LabelStyle}"/>
 
         <components:PassWordBoxControl
-            Password="{Binding LoginModel.PassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+            Password="{Binding LoginModel.PassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="25"
             ToolTip=""/>
 
+        <Separator Margin="0,5,0,0"
+                   Style="{StaticResource SepratorStyle }"/>
         <Button
             Command="{Binding LoginCommand}"
             CommandParameter="{Binding LoginModel.UserName}"
@@ -47,16 +51,20 @@
         </Grid.ColumnDefinitions>
            <TextBlock
            Grid.Column="0"
-           Text="New User ?"
+           Text="New User ?" Foreground="White" FontSize="15" Height="25"
            HorizontalAlignment="Left"/>
 
             <Button Content="Register here"
                     Command="{Binding SignUpCommand}"
                     Margin="10,0,0,0"
                     Grid.Column="1"
+                    Width="100"
+                    Height="30"
+                    FontSize="15"
+                    Style="{StaticResource ButtonStyle}"
                     HorizontalAlignment="Right"
-                    Foreground="Red"
                     BorderThickness="0"/>
         </Grid>
     </StackPanel>
+
 </Window>

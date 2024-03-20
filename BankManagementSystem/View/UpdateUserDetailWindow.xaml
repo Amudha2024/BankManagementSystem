@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BankManagementSystem.View"
         xmlns:vm="clr-namespace:BankManagementSystem.ViewModel"
         mc:Ignorable="d"
-        Title="UpdateUserDetailWindow" Height="600" Width="800">
+        Style="{StaticResource WindowStyle}"
+        Title="UpdateUserDetailWindow" Height="650" Width="500">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -70,15 +71,10 @@
 
         <Button
             Command="{Binding UpdateUserDetailCommand}"
-            Content="| Update Details |"
-            Margin="5,10"
-            Width="auto"
-            FontSize="20"
-            Height="50"
-            BorderThickness="0"
-            Background="LightGoldenrodYellow"
-            Foreground="DarkBlue"
-            FontWeight="Bold"
+            Content="|Update Details!"
+            Margin="20"
+            Width="200"
+            Style="{StaticResource ButtonStyle}"
             Click="UpdateAccountButton_Click"/>
 
         <Label

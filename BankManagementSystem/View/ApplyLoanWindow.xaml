@@ -6,27 +6,20 @@
         xmlns:local="clr-namespace:BankManagementSystem.View"
         xmlns:vm="clr-namespace:BankManagementSystem.ViewModel"
         mc:Ignorable="d"
-        Background="LightCyan" ResizeMode="NoResize"
-        Title="ApplyLoan" Height="550" Width="600" WindowStartupLocation="CenterScreen">
+        Style="{StaticResource WindowStyle}" 
+        ResizeMode="NoResize"
+        Title="ApplyLoan" Height="650" Width="500" 
+        WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <vm:ApplyLoanViewModel x:Key="ApplyVm"/>
     </Window.Resources>
 
-    <StackPanel DataContext="{StaticResource ApplyVm}" HorizontalAlignment="Center" Margin="0,10,0,0" Width="450">
+    <StackPanel DataContext="{StaticResource ApplyVm}" HorizontalAlignment="Center" Margin="10">
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            
-          <Label Content="Apply Loan Here !" Margin="120,5,0,5" FontSize="16"
-               Style="{StaticResource HeadingLabel}" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-           
-         </Grid>
-        
-         <StackPanel Margin="10,10,10,10">
+        <StackPanel Margin="10">
+
+            <Label Content="Apply Loan Here!" Style="{StaticResource HeadingLabel}"/>
 
             <Label
                 Content="Loan Type"
@@ -57,7 +50,7 @@
                    Style="{StaticResource LabelStyle}"/>
 
             <TextBox Text="{Binding ApplyLoanModel.ROI,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-              ToolTip="{Binding ApplyLoanModel.PropertyErrors[ApplyLoanModel.ROI],Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                     ToolTip="{Binding ApplyLoanModel.PropertyErrors[ApplyLoanModel.ROI],Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label Content="Duration of  Loan (in Months)"
                    Style="{StaticResource LabelStyle}"/>
@@ -66,49 +59,43 @@
                 Text="{Binding ApplyLoanModel.LoanDuration,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                 ToolTip="{Binding ApplyLoanModel.PropertyErrors[ApplyLoanModel.LoanDuration],Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Grid>
+            <Grid HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="180"/>
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-                <Button
+                <Button HorizontalContentAlignment="Center"
                 Command="{Binding ApplyLoanCommand}"
                 Content="Apply"
-                Margin="0,10,20,10"
-                Style="{StaticResource dashboardButtonStyle}"
-                Width="70"
-                FontSize="14"/>
+                Style="{StaticResource ButtonStyle}"/>
 
                 <Button Grid.Column="1"
                 Command="{Binding CancelLoanCommand}"
                 Content="Cancel"
-                Margin="10,10,64,10"
-                Style="{StaticResource dashboardButtonStyle}"
-                Width="70"
-                FontSize="14"/>
+                Style="{StaticResource ButtonStyle}"/>
 
-                <Button Grid.Column="1" Content="Previous Applied Loan"
-                HorizontalAlignment="Left"
-                Style="{StaticResource dashboardButtonStyle}" 
-                Margin="115,10,0,10"
-                FontSize="14"
+                <Button Grid.Column="2" Content="Previous Loan"
+                Style="{StaticResource ButtonStyle}" 
+                Width="150"
                 Command="{Binding PreviousAppliedLoanCommand}" Grid.ColumnSpan="2"/>
+
+                <Label Grid.Row="1" Grid.ColumnSpan="3"
+                       Content="fghasgjhgdsajsasjdhgdjhsgsdjhgsjhdsgjhs"
+                        Style="{StaticResource LabelStyle}" Margin="10"/>
 
             </Grid>
 
         </StackPanel>
 
-        <Label Content="{Binding Warning,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-               Style="{StaticResource LabelStyle}"
-               Foreground="Red"
-               FontSize="14"
-               FontWeight="Bold"
-               HorizontalAlignment="Center"/>
-
-        <Grid Height="100">
+        <Grid Height="150">
             <DataGrid
+                Height="200"
                 ItemsSource="{Binding LoanDetails}"
                 AutoGenerateColumns="False"
                 AlternatingRowBackground="Orange"
@@ -118,17 +105,17 @@
                 IsReadOnly="True"
                 ScrollViewer.CanContentScroll="True"                
                 BorderBrush="#000" 
-                BorderThickness="1" 
                 ScrollViewer.HorizontalScrollBarVisibility="Visible"
                 ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Loan Id" Width="auto" Binding="{Binding LoanId}"/>
-                    <DataGridTextColumn Header="Loan Type" Width="*" Binding="{Binding LoanType}"/>
-                    <DataGridTextColumn Header="Loan Amount" Width="*" Binding="{Binding LoanAmount}"/>
-                    <DataGridTextColumn Header="Loan Date" Width="*" Binding="{Binding LoanDate,StringFormat=d}"/>
-                    <DataGridTextColumn Header="Loan ROI" Width="*" Binding="{Binding RateOfInterst}"/>
-                    <DataGridTextColumn Header="Loan Duration" Width="*" Binding="{Binding  LoanDuration}"/>
+                    <DataGridTextColumn Header="Id" Width="auto" Binding="{Binding LoanId}"/>
+                    <DataGridTextColumn Header="Type" Width="*" Binding="{Binding LoanType}"/>
+                    <DataGridTextColumn Header="Amount" Width="*" Binding="{Binding LoanAmount}"/>
+                    <DataGridTextColumn Header="Date" Width="*" Binding="{Binding LoanDate,StringFormat=d}"/>
+                    <DataGridTextColumn Header="ROI" Width="*" Binding="{Binding RateOfInterst}"/>
+                    <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding  LoanDuration}"/>
                     <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Status}"/>
+                    <DataGridTextColumn Header="Comment" Width="*" Binding="{Binding Status}"/>
                 </DataGrid.Columns>
             </DataGrid>
             
