@@ -10,10 +10,9 @@ namespace BankManagementSystem.Model
 {
     public class SignUpModel : Notifier
     {
-        TextBoxValidation textBoxValidation;
-
         #region private propoerties
 
+        private TextBoxValidation textBoxValidation;
         private string name;
         private string userName;
         private string email;
@@ -26,7 +25,6 @@ namespace BankManagementSystem.Model
         private string state;
         private string country;
         private string warning;
-
 
         #endregion
 

@@ -18,12 +18,24 @@
             Content="Name"
             Style="{StaticResource LabelStyle}"/>
         <TextBox Text="{Binding SignUpModel.Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        
-        <Label
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+           
+            <Label
             Content="User Name"
             Style="{StaticResource LabelStyle}"/>
+            
+            <CheckBox Content="Admin" FontSize="15" Grid.Column="1"  Foreground="White"
+                      Command="{Binding IsCheckCommand}"
+                      IsChecked="{Binding IsCheck,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                      CommandParameter="{Binding IsChecked,RelativeSource={RelativeSource Self}}"/>
+        </Grid>
         <TextBox Text="{Binding SignUpModel.UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        
+
         <Label
             Content="PassWord"
             Style="{StaticResource LabelStyle}"/>
@@ -93,7 +105,7 @@
             FontWeight="Bold"/>
 
         <Label Grid.Row="1"
-            Content="fghgsgjghdjsdskjshdskjhsdkjdshkjdshksdskjs"
+            Content="{Binding S}"
             Style="{StaticResource LabelStyle}"
             Foreground="Red"
             FontSize="14"

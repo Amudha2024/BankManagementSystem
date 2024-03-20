@@ -7,18 +7,24 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BankManagementSystem.ViewModel
 {
     public class UpdateUserDetailViewModel : Notifier
     {
+        #region private Members
+
         private string warning;
 
         private UpdateUserDetail updateUserDetail;
 
         private SignUpHelper signUpModel;
 
+        #endregion
+
+        #region public Members
         public UpdateUserDetail UpdateUserDetail
         {
             get { return updateUserDetail; }
@@ -32,6 +38,8 @@ namespace BankManagementSystem.ViewModel
         }
 
         public ICommand UpdateUserDetailCommand { get; }
+
+        #endregion
 
         public UpdateUserDetailViewModel()
         {  
@@ -68,9 +76,8 @@ namespace BankManagementSystem.ViewModel
             var f = await signUpModel.UpdateUserDetail(updateUserDetail);
             if(f!= null)
             {
-
+                MessageBox.Show("User Details are Updated");
             }
-
         }
     }
 }

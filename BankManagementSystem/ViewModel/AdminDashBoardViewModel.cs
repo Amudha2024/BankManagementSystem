@@ -15,28 +15,40 @@ namespace BankManagementSystem.ViewModel
 {
     public  class AdminDashBoardViewModel :Notifier
     {
+
+        #region Private Members
         private ObservableCollection<LoanDetail> allLoanDetails;
 
         private SignUpHelper signUp;
 
         private string user;
 
+        #endregion
+
+        #region Public Members
         public string UserNameGlobal
         {
             get { return user; }
             set { user = value; Notify(); }
         }
+
         public ObservableCollection<LoanDetail> AllLoanDetails
         {
             get { return allLoanDetails; }
             set { allLoanDetails = value; Notify(); }
         }
+        #endregion
 
+        #region Commands
         public ICommand ApproveStatusCommand { get; }
 
         public ICommand RejectCommand { get; }
 
         public ICommand LogOutCommand { get; }
+
+        public ICommand GetLoanDetailsCommand { get; }
+
+        #endregion
 
         public AdminDashBoardViewModel()
         {
@@ -46,7 +58,7 @@ namespace BankManagementSystem.ViewModel
             ApproveStatusCommand = new RelayCommand(Approve);
             RejectCommand = new RelayCommand(Reject);
             LogOutCommand = new RelayCommand(Logout);
-            LoadLoanDetails();
+            GetLoanDetailsCommand = new RelayCommand(LoadLoanDetails);
         }
 
         public async void Approve()
@@ -93,33 +105,19 @@ namespace BankManagementSystem.ViewModel
             {
                 SignUpHelper sign = new SignUpHelper();
                 var result = await sign.GetAllUserLoan();
-                //LoanDetail loan = new LoanDetail
-                //{
-                //   LoanAmount=123,
-                //   Status="Pending",
-                //   LoanDate=DateTime.Now,
-                //   RateOfInterst=2,
-                //   LoanType ="Home",
-                //   LoanId =1,
-                //   LoanDuration=35
-
-                //};
-                foreach (var item in result)
+                if (result.Count == 0)
+                    MessageBox.Show("No Record Found");
+                else
                 {
-                    allLoanDetails.Add(item);
+                    foreach (var item in result)
+                    {
+                        AllLoanDetails.Add(item);
+                    }
                 }
-               
-                //if (result.Count == 0) MessageBox.Show("No Record Found");
-                //else
-                //{
-                //    foreach (var item in result)
-                //    {
-                //        AllLoanDetails.Add(item);
-                //    }
-                //}
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
         public void Logout() 

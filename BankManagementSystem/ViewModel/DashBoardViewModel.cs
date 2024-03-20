@@ -12,7 +12,19 @@ namespace BankManagementSystem.ViewModel
 {
     public  class DashBoardViewModel :Notifier
     {
+        #region private
+        private string userName;
+        #endregion
 
+        #region public
+        public string UserName
+        {
+            get { return userName; }
+            set { userName = value; Notify(); }
+        }
+        #endregion
+
+        #region Commands
         public ICommand ApplyLoanCommand { get; }
 
         public ICommand PreviousLoanCommand { get; }
@@ -20,22 +32,19 @@ namespace BankManagementSystem.ViewModel
         public ICommand UpdateAccountDetailsCommand { get; }
         public ICommand LogOutCommand { get; }
 
-        private string userNameGlobal;
-        public string UserNameGlobal
-        {
-            get { return userNameGlobal; }  
-            set { userNameGlobal = value;Notify(); }
-        }
+        #endregion
+       
 
         public DashBoardViewModel()
         {
-            UserNameGlobal = GlobalVariable.UserName;
+            userName = GlobalVariable.UserName;
             ApplyLoanCommand = new RelayCommand(ApplyLoan);
             LogOutCommand = new RelayCommand(LogOut);
             PreviousLoanCommand = new RelayCommand(PreviousLoan);
             UpdateAccountDetailsCommand = new RelayCommand(UpdateAccount);
         }
 
+        #region Members
         public void UpdateAccount()
         {
             UpdateUserDetailWindow update = new UpdateUserDetailWindow();
@@ -72,5 +81,6 @@ namespace BankManagementSystem.ViewModel
                 App.Current.Windows[intCounter].Close();
             }
         }
+        #endregion
     }
 }

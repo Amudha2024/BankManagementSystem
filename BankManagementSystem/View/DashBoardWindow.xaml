@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BankManagementSystem.View"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:BankManagementSystem.ViewModel"
-        Background="LightCyan"
+        Style="{StaticResource WindowStyle}"
         Title="Welcome To Bank" Height="450" Width="800" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -50,16 +50,13 @@
                 Content="Log Out"
                 Command="{Binding LogOutCommand}"
                 Margin="10,0"
-                Foreground="Red"
-                Background="LightCyan"
-                FontSize="20"
-                BorderThickness="0"/>
+                FontWeight="Bold"
+                Style="{StaticResource ButtonStyle}"/>
 
         </Grid>
 
         <Grid
              Margin="5">
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

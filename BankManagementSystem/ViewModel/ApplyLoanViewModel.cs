@@ -19,6 +19,7 @@ namespace BankManagementSystem.ViewModel
 {
     public class ApplyLoanViewModel :Notifier
     {
+        #region Private Members 
         private ApplyLoanModel applyLoanModel;
 
         private SignUpHelper signUpHelper;
@@ -26,6 +27,9 @@ namespace BankManagementSystem.ViewModel
         private ObservableCollection<LoanDetail> loanDetails;
 
         private string userName;
+        #endregion
+
+        #region Public Members
 
         public string UserName
         {
@@ -44,16 +48,17 @@ namespace BankManagementSystem.ViewModel
             set { applyLoanModel = value;Notify(); }
         }
 
+        #endregion
+
+        #region Commands
+
         public ICommand ApplyLoanCommand { get; }
 
         public ICommand PreviousAppliedLoanCommand { get; }
 
         public ICommand CancelLoanCommand { get; }
 
-        //public ApplyLoanViewModel(string UserName)
-        //{
-        //    UserNameAdmin = userName;
-        //}
+        #endregion
 
         public ApplyLoanViewModel()
         {
@@ -66,6 +71,7 @@ namespace BankManagementSystem.ViewModel
             PreviousAppliedLoanCommand = new RelayCommand(PreviousAppliedLoanWindowOpen);
         }
 
+        #region Methods
         public async void ApplyLoan()
         {
             try
@@ -142,5 +148,7 @@ namespace BankManagementSystem.ViewModel
 
             return true;
         }
+
+        #endregion
     }
 }

@@ -9,15 +9,21 @@ namespace BankManagementSystem.ViewModel
 
     public static class GlobalVariable
     {
-        private static string username;
+        #region private
 
-        public static string UserName
-        {
-            get { return username; }
-            set { username = value; }
-        }
+        private static string userName;
 
         private static string comment;
+
+        private static int londId;
+        #endregion
+
+        #region public
+        public static string UserName
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
 
         public static string Comment
         {
@@ -25,13 +31,13 @@ namespace BankManagementSystem.ViewModel
             set { comment = value; }
         }
 
-        private static int londId;
-
         public static int LoanID
         {
             get { return londId; }
             set { londId = value; }
         }
+
+        #endregion
     }
 }
     

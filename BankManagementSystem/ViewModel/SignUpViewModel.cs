@@ -19,9 +19,17 @@ namespace BankManagementSystem.ViewModel
 {
     public class SignUpViewModel : Notifier
     {
+        #region Private Members
+
         private SignUpModel signUpModel;
+
         private TextBoxValidation textBoxValidation;
+
         private bool isCheck;
+
+        #endregion
+
+        #region Public Members
         public SignUpModel SignUpModel
         {
             get
@@ -41,14 +49,16 @@ namespace BankManagementSystem.ViewModel
             set { isCheck = value; Notify(); }
         }
 
+        #endregion
 
+        #region Commands
         public ICommand CreateAccountCommand { get; }
 
         public ICommand IsCheckCommand { get; }
 
         public ICommand CloseCommand { get; set; }
-            
 
+        #endregion
 
         public SignUpViewModel()
         {
@@ -60,7 +70,10 @@ namespace BankManagementSystem.ViewModel
 
         public void AdminLogin()
         {
-            signUpModel.UserName = "Admin";
+            if (isCheck)
+                signUpModel.UserName = "Admin";
+            else
+                signUpModel.UserName = string.Empty;
            
         }
 
@@ -96,7 +109,6 @@ namespace BankManagementSystem.ViewModel
                     {
                         MessageBox.Show("Your Account Create Successfully");
                         CloseCommand?.Execute(null);
-                        EmptyAllValues();
                     }
                     else if (createAccountStatus.ToString() == "Register Failed")
                     {
@@ -170,13 +182,6 @@ namespace BankManagementSystem.ViewModel
             return true;
 
             #endregion
-        }
-
-        public void EmptyAllValues()
-        {
-            //SignUpModel.Password = string.Empty;
-            //SignUpModel = new SignUpModel();
-            
         }
 
     }

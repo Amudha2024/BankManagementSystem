@@ -18,6 +18,7 @@ namespace BankManagementSystem.ViewModel
     {
         private LoginModel loginModel;
 
+        #region Public Member
         public LoginModel LoginModel
         {
             get
@@ -30,12 +31,15 @@ namespace BankManagementSystem.ViewModel
                 Notify();
             }
         }
+        #endregion
+
+        #region Commands
 
         public ICommand LoginCommand { get; }
 
         public ICommand SignUpCommand { get; }
 
-       
+        #endregion
 
         public LoginViewModel()
         {
@@ -47,56 +51,53 @@ namespace BankManagementSystem.ViewModel
 
         public async void Login()
         {
-            //try
-            //{
+            try
+            {
                 LoginDetail login = new LoginDetail()
                 {
                     UserName = LoginModel.UserName,
                     Password = LoginModel.PassWord
                 };
-           // GlobalVariable.UserName =  LoginModel.UserName;
+                GlobalVariable.UserName = LoginModel.UserName;
 
-            DashBoardWindow win = new DashBoardWindow();
-            win.ShowDialog();
+                SignUpHelper signup = new SignUpHelper();
+                var data = await signup.LoginAgent(login);
+                if (data.ToString() == "Login Sucessfully")
+                {
+                    MessageBox.Show("Login Sucessfully");
+                    if (LoginModel.UserName.ToLower() == "admin")
+                    {
+                        AdminDashboardWindow adminDashboard = new AdminDashboardWindow();
+                        adminDashboard.Show();
+                    }
+                    else
+                    {
+                        DashBoardWindow dashBoard = new DashBoardWindow();
+                        dashBoard.ShowDialog();
+                    }
 
-                //SignUpHelper signup = new SignUpHelper();
-                //var data = await signup.LoginAgent(login);
-                //if (data.ToString() == "Login Sucessfully")
-                //{
-                //    MessageBox.Show("Login Sucessfully");
-                //    if (LoginModel.UserName.ToLower() == "admin")
-                //    {
-                //        AdminDashboardWindow adminDashboard = new AdminDashboardWindow();
-                //        adminDashboard.Show();
-                //    }
-                //    else
-                //    {
-                        AdminDashboardWindow dash = new AdminDashboardWindow();
-                        dash.ShowDialog();
-                    //}
-
-               // }
-            //    else
-            //    {
-            //        MessageBox.Show("User name and Password is incorrect");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+                }
+                else
+                {
+                    MessageBox.Show("User name and Password is incorrect");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void SignUp()
         {
-            var w = Application.Current.Windows[0];
-            w.Hide();
+            var currentWindow = Application.Current.Windows[0];
+            currentWindow.Hide();
             SignupWindow signupWindow = new SignupWindow();
             SignUpViewModel view = new SignUpViewModel();
             view.CloseCommand = new RelayCommand(() => { signupWindow.Close(); }) ;
             signupWindow.DataContext = view;
             signupWindow.ShowDialog();
-            w.Show();
+            currentWindow.Show();
         }
     }
 }

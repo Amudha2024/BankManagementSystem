@@ -34,13 +34,13 @@
 
             <Label Content="Loan Amount" 
                    Style="{StaticResource LabelStyle}"/>
-             
+
             <TextBox Text="{Binding ApplyLoanModel.LoanAmount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      ToolTip="{Binding ApplyLoanModel.PropertyErrors[ApplyLoanModel.LoanAmount],Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label Content="Loan Date"
                    Style="{StaticResource LabelStyle}"/>
-             
+
             <DatePicker
                 SelectedDateFormat="Long"
                 SelectedDate="{Binding ApplyLoanModel.LoanDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
@@ -59,41 +59,37 @@
                 Text="{Binding ApplyLoanModel.LoanDuration,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                 ToolTip="{Binding ApplyLoanModel.PropertyErrors[ApplyLoanModel.LoanDuration],Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Grid HorizontalAlignment="Left">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="180"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Margin="5">
+                
+                <Button Content="Apply"
+                        Margin="15,15"
+                        VerticalContentAlignment="Center"
+                        Style="{StaticResource ButtonStyle}" Width="80"
+                        Command="{Binding ApplyLoanCommand}"/>
+               
+                <Button Content="Cancel"
+                        Style="{StaticResource ButtonStyle}" 
+                        Width="80" 
+                        Margin="15,15"
+                        VerticalContentAlignment="Center"
+                        Command="{Binding CancelLoanCommand}"/>
+               
+                <Button Content="Previous Loan"
+                        Style="{StaticResource ButtonStyle}" 
+                        Width="200"
+                        Margin="15,15"
+                        VerticalContentAlignment="Center"
+                        Command="{Binding PreviousAppliedLoanCommand}"/>
+            </StackPanel>
 
-                <Button HorizontalContentAlignment="Center"
-                Command="{Binding ApplyLoanCommand}"
-                Content="Apply"
-                Style="{StaticResource ButtonStyle}"/>
-
-                <Button Grid.Column="1"
-                Command="{Binding CancelLoanCommand}"
-                Content="Cancel"
-                Style="{StaticResource ButtonStyle}"/>
-
-                <Button Grid.Column="2" Content="Previous Loan"
-                Style="{StaticResource ButtonStyle}" 
-                Width="150"
-                Command="{Binding PreviousAppliedLoanCommand}" Grid.ColumnSpan="2"/>
-
-                <Label Grid.Row="1" Grid.ColumnSpan="3"
-                       Content="fghasgjhgdsajsasjdhgdjhsgsdjhgsjhdsgjhs"
-                        Style="{StaticResource LabelStyle}" Margin="10"/>
-
-            </Grid>
+            <Label Content="{Binding ApplyLoanModel.Warning,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                   Height="30"
+                   Style="{StaticResource LabelStyle}"/>
 
         </StackPanel>
 
-        <Grid Height="150">
+        <Grid Height="150" Margin="5">
             <DataGrid
                 Height="200"
                 ItemsSource="{Binding LoanDetails}"
@@ -118,9 +114,7 @@
                     <DataGridTextColumn Header="Comment" Width="*" Binding="{Binding Status}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            
         </Grid>
-        
     </StackPanel>
 
 </Window>

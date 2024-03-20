@@ -6,60 +6,61 @@
         xmlns:local="clr-namespace:BankManagementSystem.View.Admin"
         xmlns:vm="clr-namespace:BankManagementSystem.ViewModel"
         mc:Ignorable="d"
-        Title="Admin DashboardWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        ResizeMode="NoResize"
+        Style="{StaticResource WindowStyle}"
+        Title="Admin DashboardWindow" Height="650" Width="600" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <vm:AdminDashBoardViewModel x:Key="AdminDash"/>
+        <vm:AdminDashBoardViewModel x:Key="AdminDashBoard"/>
     </Window.Resources>
-    <StackPanel Height="450" DataContext="{StaticResource AdminDash}">
+    <StackPanel DataContext="{StaticResource AdminDashBoard}" Margin="10">
+
+        <Label Content="Welcome to Loan bank"
+               Style="{StaticResource HeadingLabel}"/>
 
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Height="30" Margin="0,2,35,2">
+            <StackPanel>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                
-                <Label Content="Hello!"
-                   Style="{StaticResource HeadingLabel}"/>
 
-                    <Label Content="{Binding UserNameGlobal,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"
+                 <Label Content="Hello!"
+                 Style="{StaticResource HeadingLabel}"/>
+
+                 <Label Content="{Binding UserNameGlobal,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"
                  Style="{StaticResource HeadingLabel}"
-                 HorizontalAlignment="Left"/>
+                 HorizontalAlignment="Left" HorizontalContentAlignment="Left"/>
 
                 </Grid>
             </StackPanel>
 
-            <Label Content="Welcome to Loan Bank" Grid.Column="1"
-                   Style="{StaticResource HeadingLabel}"
-                   HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="-30,0,0,0"/>
-
             <Button 
                 Command="{Binding LogOutCommands}"
-                Grid.Column="2"
+                Grid.Column="1"
                 Content="Log Out"
-                Margin="10,0"
                 Style="{StaticResource ButtonStyle}"
-                Foreground="Orange"
-                Background="Teal"
-                FontSize="16"/>
+                Foreground="White"
+                Width="100"
+                FontSize="20"
+                Margin="180,0,0,0"
+                FontWeight="Bold"/>
         </Grid>
         <Separator
             Style="{StaticResource SepratorStyle}"/>
 
-        <TextBox
-            HorizontalAlignment="Right"
-            Text=""/>
-
-        <Grid Height="300">
+        <Button Content="Applied Loan details"
+                Style="{StaticResource ButtonStyle}"
+                Margin="350,10,0,10"
+                Command=""/>
+        <Grid  Height="350">
             <DataGrid
                 ItemsSource="{Binding AllLoanDetails}"
                 SelectionChanged="DataGrid_SelectionChanged"
@@ -69,47 +70,49 @@
                 CanUserSortColumns="True"
                 ScrollViewer.CanContentScroll="True"                
                 MaxHeight="480"
+                IsReadOnly="False"
                 ScrollViewer.HorizontalScrollBarVisibility="Visible"
                 ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,0,-17">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Loan Id" Width="auto" Binding="{Binding LoanId}"/>
+                    <DataGridTextColumn Header="Loan Id" Width="*" Binding="{Binding LoanId}"/>
                     <DataGridTextColumn Header="Loan Type" Width="*" Binding="{Binding LoanType}"/>
-                    <DataGridTextColumn Header="Loan Amount" Width="*" Binding="{Binding LoanAmount}"/>
+                    <DataGridTextColumn Header="Loan Amt" Width="*" Binding="{Binding LoanAmount}"/>
                     <DataGridTextColumn Header="Loan Date" Width="*" Binding="{Binding LoanDate,StringFormat=d}"/>
                     <DataGridTextColumn Header="Loan ROI" Width="*" Binding="{Binding RateOfInterst}"/>
-                    <DataGridTextColumn Header="Loan Duration" Width="*" Binding="{Binding LoanDuration}"/>
+                    <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding LoanDuration}"/>
                     <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Status}"/>
+                    <DataGridTextColumn Header="Comments" Width="*" Binding="{Binding Status}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <Separator
-            Style="{StaticResource SepratorStyle}"/>
 
-        <Grid Margin="0,30">
+        <Separator
+            Style="{StaticResource SepratorStyle}" Margin="0,30"/>
+
+        
+        <Grid Margin="5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="1"
-              Command="{Binding ApproveStatusCommand}"
-              Content="Approve"
-              Foreground="Red"
-              FontSize="12"
-              Background="Transparent"
-              Width="100"
-              BorderThickness="2"/>
-
-            <Button Grid.Column="2"
+            <Button
+             Command="{Binding ApproveStatusCommand}"
+             Content="Approve"
              Width="100"
-             Margin="5,0"
+             Margin="150,0,0,0"
+             Style="{StaticResource ButtonStyle}"
+             FontWeight="Bold"/>
+
+            <Button Grid.Column="1"
              Command="{Binding RejectCommand}"
              Content="Reject"
-             Foreground="Red"
-             Background="Transparent"
-             FontSize="12"
-             BorderThickness="2"/>
+             Width="100"
+             Style="{StaticResource ButtonStyle}"
+             FontWeight="Bold"/>
+            
         </Grid>
+
+
     </StackPanel>
 </Window>
