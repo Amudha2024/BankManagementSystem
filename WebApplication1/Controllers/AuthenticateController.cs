@@ -73,19 +73,6 @@ namespace BankManagementApi.Controllers
         {
             try
             {
-            //    LoanDetail loan = new LoanDetail()
-            //    {
-            //        LoanId = loanDeatailDto.LoanId,
-            //        LoanAmount = loanDeatailDto.LoanAmount,
-            //        LoanDate = loanDeatailDto.LoanDate,
-            //        LoanDuration = loanDeatailDto.LoanDuration,
-            //        LoanType = loanDeatailDto.LoanType,
-            //        RateOfInterst = loanDeatailDto.RateOfInterst,
-            //        Status = loanDeatailDto.Status,
-            //        Comment = loanDeatailDto.Comment,
-            //        UserName = loanDeatailDto.UserName,
-            //    };
-
                 await appData.LoanDetails.AddAsync(loanDeatailDto);
                 await appData.SaveChangesAsync();
                 return true;
@@ -99,7 +86,6 @@ namespace BankManagementApi.Controllers
         [HttpGet("GetUserDetail/{userName}")]
         public async Task<NewUserDetails> GetUserDetails(string userName)
         {
-            //return await appData.LoanDetails?.FirstOrDefaultAsync(x => x.LoanId == loanId);
             return await appData.UserDetails.FirstOrDefaultAsync(x => x.UserName == userName);
         }
 
@@ -130,7 +116,6 @@ namespace BankManagementApi.Controllers
                 else
                 {
                     return false;
-                    //return result.Errors.FirstOrDefault().Description;
                 }
             }
             catch

@@ -13,7 +13,6 @@ namespace BankManagementApi.Controllers
     public class ApplyLoanController : ControllerBase
     {
         private readonly AppDataContext appData;
-     
 
         public ApplyLoanController(AppDataContext appData)
         {
@@ -21,12 +20,10 @@ namespace BankManagementApi.Controllers
             
         }
 
-
         [HttpGet("GetAllLoan")]
         public async Task<List<LoanDetail>> GetAllLoan()
         {
             return await appData.LoanDetails?.ToListAsync();
-            //return await appData.LoanDetails?.Where(x => x.UserName == userName).ToListAsync();
         }
 
 
@@ -34,7 +31,6 @@ namespace BankManagementApi.Controllers
         [HttpGet("GetLoan/{userName}")]
         public async Task<List<LoanDetail>> GetLoan(string userName)
         {
-            //return await appData.LoanDetails?.FirstOrDefaultAsync(x => x.LoanId == loanId);
             return await appData.LoanDetails?.Where(x => x.UserName == userName).ToListAsync();
         }
 
@@ -73,7 +69,7 @@ namespace BankManagementApi.Controllers
             {
                 LoanDetail loan = appData.LoanDetails.FirstOrDefault(s => s.LoanId == loanDeatailDto.LoanId);
                 loan.LoanType = loanDeatailDto.LoanType;
-                loan.Status= loanDeatailDto.Status;
+                loan.Status = loanDeatailDto.Status;
                 loan.LoanDuration = loanDeatailDto.LoanDuration;
                 loan.Status = loanDeatailDto.Status;
                 loan.LoanDate = loanDeatailDto.LoanDate;
