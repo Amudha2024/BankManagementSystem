@@ -46,7 +46,6 @@ namespace BankManagementSystem.ViewModel
             LoginModel = new LoginModel();
             LoginCommand = new RelayCommand(Login);
             SignUpCommand = new RelayCommand(SignUp);
-            
         }
 
         public async void Login()
@@ -77,10 +76,7 @@ namespace BankManagementSystem.ViewModel
                         {
                             DashBoardWindow dashBoard = new DashBoardWindow();
                             dashBoard.ShowDialog();
-
-
                         }
-
                     }
                     else
                     {

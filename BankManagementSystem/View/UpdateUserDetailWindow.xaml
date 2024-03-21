@@ -15,12 +15,8 @@
         </ResourceDictionary>
     </Window.Resources>
     
-    <StackPanel
-        DataContext="{StaticResource UserDetailVm}"
-        Margin="20">
-       
-        <Label
-            Foreground="Red"/>
+    <StackPanel DataContext="{StaticResource UserDetailVm}" Margin="20">
+        <Label Content="{Binding UpdateUserDetail.UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="Red"/>
         <Separator
             Background="Black"/>
         <Label
@@ -68,7 +64,6 @@
             Content="Account Type"
             Style ="{StaticResource LabelStyle}"/>
         <ComboBox IsEditable="False" SelectedItem="{Binding UpdateUserDetail.AccountType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
         <Button
             Command="{Binding UpdateUserDetailCommand}"
             Content="|Update Details!"
@@ -76,7 +71,6 @@
             Width="200"
             Style="{StaticResource ButtonStyle}"
             Click="UpdateAccountButton_Click"/>
-
         <Label
             Content="{Binding Warning,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
             Style="{StaticResource LabelStyle}"

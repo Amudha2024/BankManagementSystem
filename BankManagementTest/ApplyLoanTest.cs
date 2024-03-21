@@ -17,12 +17,10 @@ namespace BankManagementTest
        
         private ICommand applyLoanCommand;
 
-
         [SetUp]
         public void Setup()
         {
             applyLoanVM = new ApplyLoanViewModel();
-            
         }
 
         [Test]
@@ -31,7 +29,6 @@ namespace BankManagementTest
             applyLoanCommand = new RelayCommand(applyLoanVM.ApplyLoan);
             applyLoanCommand.CanExecute(null);
             applyLoanCommand.Execute(null);
-
             Assert.NotNull(applyLoanVM.ApplyLoanModel.ROI);
         }
 
@@ -46,7 +43,6 @@ namespace BankManagementTest
             applyLoanVM.PropertyErrors.Add("", "");
             Assert.NotNull(applyLoanVM.PropertyErrors.Any());
         }
-
 
         [Test]
         public void CreateNewLoan_LoanDuration_Errors_Test()
@@ -89,7 +85,6 @@ namespace BankManagementTest
         {
             applyLoanVM.ApplyLoanModel.LoanDate = "02-02-2020";
             applyLoanVM.ApplyLoan();
-
             Assert.IsNotNull(applyLoanVM.ApplyLoanModel.LoanDate);
         }
 
@@ -98,7 +93,6 @@ namespace BankManagementTest
         {
             applyLoanVM.ApplyLoanModel.LoanDate = "02/02/2020";
             applyLoanVM.ApplyLoan();
-
             Assert.IsNotNull(applyLoanVM.ApplyLoanModel.LoanDate);
         }
 

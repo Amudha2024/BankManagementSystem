@@ -7,44 +7,36 @@
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:BankManagementSystem.ViewModel"
         Style="{StaticResource WindowStyle}"
+        ResizeMode="NoResize"
         Title="Welcome To Bank" Height="450" Width="800" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <vm:DashBoardViewModel x:Key="DashBoard"/>
     </Window.Resources>
 
-
-    <StackPanel DataContext="{StaticResource DashBoard}" HorizontalAlignment="Center" Width="800">
-
+    <StackPanel DataContext="{StaticResource DashBoard}" HorizontalAlignment="Center" Margin="5" Width="800">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-
             <StackPanel Height="30">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-
-                   <Label Content="Hello!"
-                   Style="{StaticResource HeadingLabel}"/>
-
+                 <Label Content="Hello!"
+                        Style="{StaticResource HeadingLabel}"/>
                  <Label Content="{Binding UserNameGlobal,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"
-                 Style="{StaticResource HeadingLabel}"
-                 HorizontalAlignment="Left"/>
-
+                        Style="{StaticResource HeadingLabel}"
+                        HorizontalAlignment="Left"/>
                 </Grid>
             </StackPanel>
-
             <Label Content="Welcome To Loan Department"
                    Style="{StaticResource HeadingLabel }"
                    HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="276,0,0,0"/>
-
             <Button
                 Grid.Column="2"
                 Content="Log Out"
@@ -52,24 +44,19 @@
                 Margin="10,0"
                 FontWeight="Bold"
                 Style="{StaticResource ButtonStyle}"/>
-
         </Grid>
-
         <Grid
              Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
             <Button Content="Update Account Details"
                     Command="{Binding UpdateAccountDetailsCommand}"
                     Style="{StaticResource dashboardButtonStyle}"/>
-
             <Button Content="Apply Loan" Grid.Column="1"
               Command="{Binding ApplyLoanCommand}"
               Style="{StaticResource dashboardButtonStyle}"/>
-
         </Grid>
     </StackPanel>
 </Window>

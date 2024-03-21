@@ -13,35 +13,30 @@
     <Window.Resources>
         <vm:AdminDashBoardViewModel x:Key="AdminDashBoard"/>
     </Window.Resources>
+    
     <StackPanel DataContext="{StaticResource AdminDashBoard}" Margin="10">
-
         <Label Content="Welcome to Loan bank"
                Style="{StaticResource HeadingLabel}"/>
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
             <StackPanel>
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-
                  <Label Content="Hello!"
-                 Style="{StaticResource HeadingLabel}"/>
-
-                 <Label Content="{Binding UserNameGlobal,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"
-                 Style="{StaticResource HeadingLabel}"
-                 HorizontalAlignment="Left" HorizontalContentAlignment="Left"/>
-
+                        Style="{StaticResource HeadingLabel}"/>
+                 <Label Content="{Binding UserNameGlobal,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                        Grid.Column="1"
+                        Style="{StaticResource HeadingLabel}"
+                        HorizontalAlignment="Left"
+                        HorizontalContentAlignment="Left"/>
                 </Grid>
             </StackPanel>
-
             <Button 
                 Command="{Binding LogOutCommands}"
                 Grid.Column="1"
@@ -53,15 +48,13 @@
                 Margin="180,0,0,0"
                 FontWeight="Bold"/>
         </Grid>
-        <Separator
-            Style="{StaticResource SepratorStyle}"/>
-
+        <Separator Style="{StaticResource SepratorStyle}"/>
         <Button Content="Applied Loan details"
                 Style="{StaticResource ButtonStyle}"
                 Margin="350,10,0,10"
                 Command=""/>
         <Grid  Height="350">
-            <DataGrid
+               <DataGrid
                 ItemsSource="{Binding AllLoanDetails}"
                 SelectionChanged="DataGrid_SelectionChanged"
                 AutoGenerateColumns="False"
@@ -85,17 +78,12 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-
-        <Separator
-            Style="{StaticResource SepratorStyle}" Margin="0,30"/>
-
-        
+        <Separator Style="{StaticResource SepratorStyle}" Margin="0,30"/>
         <Grid Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
             <Button
              Command="{Binding ApproveStatusCommand}"
              Content="Approve"
@@ -103,16 +91,12 @@
              Margin="150,0,0,0"
              Style="{StaticResource ButtonStyle}"
              FontWeight="Bold"/>
-
             <Button Grid.Column="1"
              Command="{Binding RejectCommand}"
              Content="Reject"
              Width="100"
              Style="{StaticResource ButtonStyle}"
              FontWeight="Bold"/>
-            
         </Grid>
-
-
     </StackPanel>
 </Window>

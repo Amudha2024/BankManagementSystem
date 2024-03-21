@@ -16,6 +16,7 @@ namespace BankManagementSystem.ViewModel
         private static string comment;
 
         private static int londId;
+
         #endregion
 
         #region public

@@ -23,7 +23,6 @@ namespace BankManagementTest
         public void Setup()
         {
             signUpViewModel = new SignUpViewModel();
-             
             createAccountCommand = new RelayCommand (signUpViewModel.CreateAccount);
             signUpViewModel.SignUpModel.Name = userDetail.Name;
             signUpViewModel.SignUpModel.UserName = userDetail.UserName;
@@ -52,7 +51,7 @@ namespace BankManagementTest
         public void signUpViewModel_Dash_LoanDate_Test()
         {
             signUpViewModel.SignUpModel.DOB = "02-02-2020";
-            //signUpViewModel.CreateAccount();
+            signUpViewModel.CreateAccount();
 
             Assert.IsNotNull(signUpViewModel.SignUpModel.DOB);
         }

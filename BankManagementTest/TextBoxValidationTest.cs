@@ -12,6 +12,7 @@ namespace BankManagementTest
     public class TextBoxValidationTest
     {
         private TextBoxValidation textBlockValidation;
+
         [SetUp]
         public void Setup()
         {
@@ -24,7 +25,6 @@ namespace BankManagementTest
         public void UserNameValidation_Pass_Test(string username)
         {
             bool res = textBlockValidation.UserNameValidation(username);
-
             Assert.IsFalse(res);
         }
 
@@ -34,7 +34,6 @@ namespace BankManagementTest
         public void UserNameValidation_Fail_Test(string username)
         {
             bool res = textBlockValidation.UserNameValidation(username);
-
             Assert.IsTrue(res);
         }
 
@@ -44,7 +43,6 @@ namespace BankManagementTest
         public void PasswordValidation_Pass_Test(string password)
         {
             bool res = textBlockValidation.PasswordValidation(password);
-
             Assert.IsFalse(res);
         }
 
@@ -56,7 +54,6 @@ namespace BankManagementTest
         public void PasswordValidation_Fail_Test(string password)
         {
             bool res = textBlockValidation.PasswordValidation(password);
-
             Assert.IsTrue(res);
         }
 
@@ -67,7 +64,6 @@ namespace BankManagementTest
         public void PANandContactNoValidation_Pass_Test(string pan)
         {
             bool res = textBlockValidation.ContactNoValidation(pan);
-
             Assert.IsFalse(res);
         }
 
@@ -77,7 +73,6 @@ namespace BankManagementTest
         public void EmailIDValidation_Pass_Test(string emailId)
         {
             bool res = textBlockValidation.EmailIDValidation(emailId);
-
             Assert.IsFalse(res);
         }
 
@@ -88,7 +83,6 @@ namespace BankManagementTest
         public void EmailIDValidation_Fail_Test(string emailId)
         {
             bool res = textBlockValidation.EmailIDValidation(emailId);
-
             Assert.IsTrue(res);
         }
 
@@ -98,7 +92,6 @@ namespace BankManagementTest
         public void FutureDateValidation_Pass_Test(string futureDate)
         {
             bool res = textBlockValidation.DateValidation(futureDate);
-
             Assert.IsFalse(res);
         }
 
@@ -108,7 +101,6 @@ namespace BankManagementTest
         public void FutureDateValidation_Fail_Test(string futureDate)
         {
             bool res = textBlockValidation.DateValidation(futureDate);
-
             Assert.IsTrue(res);
         }
 
@@ -118,7 +110,6 @@ namespace BankManagementTest
         public void AgeGreaterThan18_Pass_Test(string date)
         {
             bool res = textBlockValidation.AgeGreaterThan18(date);
-
             Assert.IsFalse(res);
         }
 
@@ -128,7 +119,6 @@ namespace BankManagementTest
         public void AgeGreaterThan18_Fail_Test(string date)
         {
             bool res = textBlockValidation.AgeGreaterThan18(date);
-
             Assert.IsTrue(res);
         }
     }

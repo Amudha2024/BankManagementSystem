@@ -32,7 +32,6 @@ namespace BankManagementSystem.ViewModel
         #endregion
 
         #region Public Members
-
         public string UserName
         {
             get { return userName; }
@@ -53,13 +52,12 @@ namespace BankManagementSystem.ViewModel
         #endregion
 
         #region Commands
-
         public ICommand ApplyLoanCommand { get; }
 
         public ICommand PreviousAppliedLoanCommand { get; }
 
         public ICommand CancelLoanCommand { get; }
-
+        
         #endregion
 
         public ApplyLoanViewModel()

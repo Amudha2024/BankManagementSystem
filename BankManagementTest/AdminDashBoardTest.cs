@@ -27,7 +27,6 @@ namespace BankManagementTest
             List<LoanDetail> loanList = new List<LoanDetail>();
             loanList.Add(TestData.LoanDetail);
             adminDashboardVM.AllLoanDetails = new System.Collections.ObjectModel.ObservableCollection<LoanDetail>(loanList);
-
             Assert.IsNotNull(adminDashboardVM.AllLoanDetails);
         }
     }

@@ -77,7 +77,7 @@ namespace BankManagementSystem.ViewModel
            
         }
 
-        public async void CreateAccount(object obj)
+        public async void CreateAccount()
         {
             if (Validation())
             {
@@ -102,7 +102,7 @@ namespace BankManagementSystem.ViewModel
                         Dob = DateTime.Parse(mydate),
                         AccountType = signUpModel.AccountType.Split(":")[1].Trim(),
                     };
-
+                    
                     SignUpHelper helper = new SignUpHelper();
                     var createAccountStatus = await helper.CreateAccount(user);
                     if (createAccountStatus.ToString() == "Register Sucessfully")
@@ -114,7 +114,6 @@ namespace BankManagementSystem.ViewModel
                     {
                         MessageBox.Show("User Name is Already Exists");
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -137,43 +136,46 @@ namespace BankManagementSystem.ViewModel
             CheckForIsNullOrEmpty(nameof(signUpModel.ContactNumber), signUpModel.ContactNumber);
             CheckForIsNullOrEmpty(nameof(signUpModel.DOB), signUpModel.DOB);
             signUpModel.Warning = "";
-
             if (string.IsNullOrEmpty(signUpModel.UserName) || string.IsNullOrEmpty(signUpModel.Password) || string.IsNullOrEmpty(signUpModel.Email) || string.IsNullOrEmpty(signUpModel.PAN) || string.IsNullOrEmpty(signUpModel.ContactNumber) || string.IsNullOrEmpty(signUpModel.DOB))
             {
                 signUpModel.Warning = "All Fields are Mandatory";
                 return false ;
             }
-
             if (textBoxValidation.UserNameValidation(signUpModel.UserName))
             {
                 signUpModel.Warning = " 7 < UserName > 21 and, must not have special character except _";
                 return false;
             }
-
             if (textBoxValidation.PasswordValidation(signUpModel.Password))
             {
                 signUpModel.Warning = "Password must be inbetween 8-20 and must have 1 Caps, 1 Small and 1 Special character";
                 return false;
             }
-
             if (textBoxValidation.EmailIDValidation(signUpModel.Email))
             {
                 signUpModel.Warning = "Invalid Email ID";
                 return false;
             }
-
             if (textBoxValidation.PanValidation(signUpModel.PAN))
             {
-                signUpModel.Warning = "Invalid PAN Number, 1st digit should not be 0 and must have 10 digits.";
+                signUpModel.Warning = "Invalid PAN Number";
                 return false;
             }
-
             if (textBoxValidation.ContactNoValidation(signUpModel.ContactNumber))
             {
                 signUpModel.Warning = "Invalid Contact Number, 1st digit should not be 0 and must have 10 digits.";
                 return false;
             }
-
+            if (textBoxValidation.CountryValidation(signUpModel.Country))
+            {
+                signUpModel.Warning = "Invalid Country.";
+                return false;
+            }
+            if (textBoxValidation.StateValidationValidation(signUpModel.State))
+            {
+                signUpModel.Warning = "Invalid State.";
+                return false;
+            }
             if (textBoxValidation.AgeGreaterThan18(signUpModel.DOB))
             {
                 signUpModel.Warning = "No Future Date Please and Age > 18.";

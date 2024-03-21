@@ -15,15 +15,12 @@
         <vm:ApplyLoanViewModel x:Key="ApplyVm"/>
     </Window.Resources>
 
-    <StackPanel DataContext="{StaticResource ApplyVm}" HorizontalAlignment="Center" Margin="10">
-
+    <StackPanel DataContext="{StaticResource ApplyVm}" HorizontalAlignment="Center" Margin="0,5,0,0" Height="614" VerticalAlignment="Top">
         <StackPanel Margin="10">
-
-            <Label Content="Apply Loan Here!" Style="{StaticResource HeadingLabel}"/>
-
-            <Label
-                Content="Loan Type"
-                Style="{StaticResource LabelStyle}"/>
+            <Label Content="Apply Loan Here!"
+                   Style="{StaticResource HeadingLabel}"/>
+            <Label Content="Loan Type"
+                   Style="{StaticResource LabelStyle}"/>
             <ComboBox 
                  SelectedItem="{Binding ApplyLoanModel.LoanType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
                 <ComboBoxItem>Personal</ComboBoxItem>
@@ -31,50 +28,38 @@
                 <ComboBoxItem>Vechicle Loan</ComboBoxItem>
                 <ComboBoxItem IsSelected="True">Home</ComboBoxItem>
             </ComboBox>
-
             <Label Content="Loan Amount" 
                    Style="{StaticResource LabelStyle}"/>
-
             <TextBox Text="{Binding ApplyLoanModel.LoanAmount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      ToolTip="{Binding ApplyLoanModel.PropertyErrors[ApplyLoanModel.LoanAmount],Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
             <Label Content="Loan Date"
                    Style="{StaticResource LabelStyle}"/>
-
             <DatePicker
                 SelectedDateFormat="Long"
                 SelectedDate="{Binding ApplyLoanModel.LoanDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                 ToolTip="{Binding ApplyLoanModel.PropertyErrors[ApplyLoanModel.LoanDate],Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
             <Label Content="ROI % (based on Loan Duration"
                    Style="{StaticResource LabelStyle}"/>
-
             <TextBox Text="{Binding ApplyLoanModel.ROI,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      ToolTip="{Binding ApplyLoanModel.PropertyErrors[ApplyLoanModel.ROI],Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
             <Label Content="Duration of  Loan (in Months)"
                    Style="{StaticResource LabelStyle}"/>
-
             <TextBox
                 Text="{Binding ApplyLoanModel.LoanDuration,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                 ToolTip="{Binding ApplyLoanModel.PropertyErrors[ApplyLoanModel.LoanDuration],Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
                         Margin="5">
-                
                 <Button Content="Apply"
                         Margin="15,15"
                         VerticalContentAlignment="Center"
                         Style="{StaticResource ButtonStyle}" Width="80"
                         Command="{Binding ApplyLoanCommand}"/>
-               
                 <Button Content="Cancel"
                         Style="{StaticResource ButtonStyle}" 
                         Width="80" 
                         Margin="15,15"
                         VerticalContentAlignment="Center"
                         Command="{Binding CancelLoanCommand}"/>
-               
                 <Button Content="Previous Loan"
                         Style="{StaticResource ButtonStyle}" 
                         Width="200"
@@ -82,16 +67,13 @@
                         VerticalContentAlignment="Center"
                         Command="{Binding PreviousAppliedLoanCommand}"/>
             </StackPanel>
-
-            <Label Content="{Binding ApplyLoanModel.Warning,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                   Height="30"
-                   Style="{StaticResource LabelStyle}"/>
-
         </StackPanel>
-
         <Grid Height="150" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <DataGrid
-                Height="200"
                 ItemsSource="{Binding LoanDetails}"
                 AutoGenerateColumns="False"
                 AlternatingRowBackground="Orange"
@@ -102,7 +84,7 @@
                 ScrollViewer.CanContentScroll="True"                
                 BorderBrush="#000" 
                 ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                ScrollViewer.VerticalScrollBarVisibility="Auto">
+                ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,0,-17" Grid.RowSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Width="auto" Binding="{Binding LoanId}"/>
                     <DataGridTextColumn Header="Type" Width="*" Binding="{Binding LoanType}"/>
@@ -115,6 +97,9 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
+        <Label Content="{Binding ApplyLoanModel.Warning,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+               Height="30"
+               Margin="5,30"
+               Style="{StaticResource LabelStyle}"/>
     </StackPanel>
-
 </Window>

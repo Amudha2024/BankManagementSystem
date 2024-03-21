@@ -1,10 +1,6 @@
 ﻿using BankManagementSystem.CommandsandNotify;
-using System.Windows.Media;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BankManagementSystem.Model.Service;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -15,7 +11,6 @@ namespace BankManagementSystem.ViewModel
 {
     public  class AdminDashBoardViewModel :Notifier
     {
-
         #region Private Members
         private ObservableCollection<LoanDetail> allLoanDetails;
 
@@ -71,14 +66,15 @@ namespace BankManagementSystem.ViewModel
                 MessageBox.Show("Cant Change the status");
                 return;
             }
-            var d = await signUp.ApproveLoanStatus(loanList);
+            var approve = await signUp.ApproveLoanStatus(loanList);
             AllLoanDetails.Clear();
-            var g = await signUp.GetAllUserLoan();
-            foreach (var item in g)
+            var list = await signUp.GetAllUserLoan();
+            foreach (var item in list)
             {
                 AllLoanDetails.Add(item);
             }
         }
+
         public async void Reject()
         {
             var loanList = AllLoanDetails.FirstOrDefault(x => x.LoanId == GlobalVariable.LoanID);
@@ -89,16 +85,15 @@ namespace BankManagementSystem.ViewModel
                 MessageBox.Show("Cant Change the status");
                 return;
             }
-            var d = await signUp.RejectLoanStatus(loanList);
+            var reject = await signUp.RejectLoanStatus(loanList);
             AllLoanDetails.Clear();
-            var g = await signUp.GetAllUserLoan();
-            foreach (var item in g)
+            var list = await signUp.GetAllUserLoan();
+            foreach (var item in list)
             {
                 AllLoanDetails.Add(item);
             }
         }
     
-
         public async void LoadLoanDetails()
         {
             try
@@ -124,13 +119,10 @@ namespace BankManagementSystem.ViewModel
         {
             CloseAllWindows();
             MessageBox.Show("Logged Out Sucessfully");
-            LoginWindow login = new LoginWindow();
-            login.ShowDialog();
         }
 
         public void CloseAllWindows()
         {
-
             for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
             {
                 App.Current.Windows[intCounter].Close();

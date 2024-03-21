@@ -53,31 +53,34 @@ namespace BankManagementSystem.ViewModel
             }
         }
 
+        #region Methods
         private async void GetUserDetails()
         {
 
-            var d = await signUpModel.GetUserDetail(updateUserDetail.UserName);
-            if (d != null)
+            var getUser = await signUpModel.GetUserDetail(updateUserDetail.UserName);
+            if (getUser != null)
             {
-                updateUserDetail.Name = d.Name;
-                updateUserDetail.Email = d.Email;
-                updateUserDetail.Address = d.Address;
-                updateUserDetail.ContactNumber = d.ContactNumber;
-                updateUserDetail.Country = d.Country;
-                updateUserDetail.AccountType= d.AccountType;
-                updateUserDetail.PAN = d.PAN;
-                updateUserDetail.State = d.State;
-                updateUserDetail.DOB=d.DOB;
+                updateUserDetail.Name = getUser.Name;
+                updateUserDetail.Email = getUser.Email;
+                updateUserDetail.Address = getUser.Address;
+                updateUserDetail.ContactNumber = getUser.ContactNumber;
+                updateUserDetail.Country = getUser.Country;
+                updateUserDetail.AccountType= getUser.AccountType;
+                updateUserDetail.PAN = getUser.PAN;
+                updateUserDetail.State = getUser.State;
+                updateUserDetail.DOB= getUser.DOB;
             }
         }
 
         private async void UdpateDetails()
         {
-            var f = await signUpModel.UpdateUserDetail(updateUserDetail);
-            if(f!= null)
+            var updatedValue = await signUpModel.UpdateUserDetail(updateUserDetail);
+            if(updatedValue != null)
             {
                 MessageBox.Show("User Details are Updated");
             }
         }
+
+        #endregion
     }
 }

@@ -1,10 +1,6 @@
 ﻿using BankManagementSystem.CommandsandNotify;
-using BankManagementSystem.Validations;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BankManagementSystem.Model
 {
@@ -13,8 +9,6 @@ namespace BankManagementSystem.Model
         #region private Members
 
         private Dictionary<string, string> propertyErrors;
-
-        private TextBoxValidation textboxValidation;
 
         private string loanType;
 

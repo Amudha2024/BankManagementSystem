@@ -11,6 +11,10 @@ namespace BankManagementTest
     {
         private static NewUserDetails userDetail;
 
+        private static LoanDetail loanDetail;
+
+        private static LoginDetail loginDetail;
+
         public static NewUserDetails UserDetail
         {
             get
@@ -35,8 +39,6 @@ namespace BankManagementTest
             }
         }
 
-        private static LoanDetail loanDetail;
-
         public static LoanDetail LoanDetail
         {
             get
@@ -55,8 +57,6 @@ namespace BankManagementTest
                 }; return loanDetail;
             }
         }
-
-        private static LoginDetail loginDetail;
 
         public static LoginDetail LoginDetail
         {

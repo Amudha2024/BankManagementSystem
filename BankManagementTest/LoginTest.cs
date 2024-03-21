@@ -14,14 +14,14 @@ namespace BankManagementTest
     public class LoginTest
     {
         private LoginViewModel loginViewModel;
-        private ICommand LoginCommand;
+        private ICommand loginCommand;
         private ICommand signupCommand;
 
         [SetUp]
         public void Setup()
         {
             loginViewModel = new LoginViewModel();
-            LoginCommand = new RelayCommand(loginViewModel.Login);
+            loginCommand = new RelayCommand(loginViewModel.Login);
             signupCommand = new RelayCommand(loginViewModel.SignUp);
         }
 
@@ -94,12 +94,13 @@ namespace BankManagementTest
         [Test]
         public void loginViewModelCommand_Test()
         {
+            //Arrange & Act
             loginViewModel.LoginModel.UserName = "test";
             loginViewModel.LoginModel.PassWord = "Test@121";
-
             loginViewModel.LoginCommand.CanExecute(null);
             loginViewModel.LoginCommand.Execute(null);
 
+            //Assert
             Assert.IsNull(loginViewModel.LoginModel.Warning);
 
         }
@@ -108,10 +109,8 @@ namespace BankManagementTest
         public void LoginSecurityQuery_UserName_Fail_Test()
         {
             loginViewModel.LoginModel.PassWord = "Test@121";
-
             loginViewModel.LoginCommand.CanExecute(null);
             loginViewModel.LoginCommand.Execute(null);
-
             Assert.IsNull(loginViewModel.LoginModel.UserName);
 
         }
@@ -120,12 +119,9 @@ namespace BankManagementTest
         public void LoginSecurityQuery_Password_Fail_Test()
         {
             loginViewModel.LoginModel.UserName = "test";
-
             loginViewModel.LoginCommand.CanExecute(null);
             loginViewModel.LoginCommand.Execute(null);
-
             Assert.IsNull(loginViewModel.LoginModel.PassWord);
-
         }
 
     }

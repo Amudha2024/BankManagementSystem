@@ -15,35 +15,27 @@
     </Window.Resources>
 
     <StackPanel DataContext="{StaticResource Login}" Margin="100,180">
-        <Label Content="Login to Online Loan" Style="{StaticResource HeadingLabel}"/>
-
-        <Label
-            Content="UserName"
-            Style="{StaticResource LabelStyle}"/>
-        <TextBox VerticalContentAlignment="Center"  Text="{Binding LoginModel.UserName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Height="25"/>
-
-        <Label
-            Content="Password"
-            Style="{StaticResource LabelStyle}"/>
-
+        <Label Content="Login to Online Loan" 
+               Style="{StaticResource HeadingLabel}"/>
+        <Label Content="User Name"
+               Style="{StaticResource LabelStyle}"/>
+        <TextBox VerticalContentAlignment="Center"  
+                 Text="{Binding LoginModel.UserName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                 Height="25"/>
+        <Label Content="Password" 
+               Style="{StaticResource LabelStyle}"/>
         <components:PassWordBoxControl
             Password="{Binding LoginModel.PassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Height="25"
             ToolTip=""/>
-
-        <Separator Margin="0,5,0,0"
-                   Style="{StaticResource SepratorStyle }"/>
+        <Separator Margin="0,5,0,0" Style="{StaticResource SepratorStyle }"/>
         <Button
             Command="{Binding LoginCommand}"
             CommandParameter="{Binding LoginModel.UserName}"
             Content="Login"
             Margin="0,10"
             Style="{StaticResource ButtonStyle}"/>
-        
-        <Separator Margin="0,5,0,0"
-                   Style="{StaticResource SepratorStyle }"/>
-        
+        <Separator Margin="0,5,0,0" Style="{StaticResource SepratorStyle }"/>
         <Grid Margin="0,5" HorizontalAlignment="Center">
-            
         <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -53,8 +45,7 @@
            Grid.Column="0"
            Text="New User ?" Foreground="White" FontSize="15" Height="25"
            HorizontalAlignment="Left"/>
-
-            <Button Content="Register here"
+          <Button Content="Register here"
                     Command="{Binding SignUpCommand}"
                     Margin="10,0,0,0"
                     Grid.Column="1"
@@ -66,5 +57,4 @@
                     BorderThickness="0"/>
         </Grid>
     </StackPanel>
-
 </Window>

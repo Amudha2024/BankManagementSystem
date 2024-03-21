@@ -18,81 +18,66 @@
             Content="Name"
             Style="{StaticResource LabelStyle}"/>
         <TextBox Text="{Binding SignUpModel.Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-           
-            <Label
-            Content="User Name"
-            Style="{StaticResource LabelStyle}"/>
-            
+            <Label Content="User Name" Style="{StaticResource LabelStyle}"/>
             <CheckBox Content="Admin" FontSize="15" Grid.Column="1"  Foreground="White"
                       Command="{Binding IsCheckCommand}"
                       IsChecked="{Binding IsCheck,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                       CommandParameter="{Binding IsChecked,RelativeSource={RelativeSource Self}}"/>
         </Grid>
         <TextBox Text="{Binding SignUpModel.UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
         <Label
             Content="PassWord"
             Style="{StaticResource LabelStyle}"/>
         <components:PassWordBoxControl Password="{Binding SignUpModel.Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
         <Label
             Content="Address"
             Style="{StaticResource LabelStyle}"/>
         <TextBox Text="{Binding SignUpModel.Address,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
         <Label
             Content="State"
             Style="{StaticResource LabelStyle}"/>
         <TextBox Text="{Binding SignUpModel.State,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
         <Label
             Content="Country"
             Style="{StaticResource LabelStyle}"/>
         <TextBox Text="{Binding SignUpModel.Country,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
         <Label
             Content="Email ID"
             Style="{StaticResource LabelStyle}"/>
         <TextBox Text="{Binding SignUpModel.Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
         <Label
             Content="PAN Number"
             Style="{StaticResource LabelStyle}"/>
         <TextBox Text="{Binding SignUpModel.PAN,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
         <Label
             Content="Contact Number"
             Style="{StaticResource LabelStyle}"/>
         <TextBox Text="{Binding SignUpModel.ContactNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
         <Label
             Content="Date Of Birth"
             Style="{StaticResource LabelStyle}"/>
         <DatePicker
             SelectedDateFormat="Short"
             SelectedDate="{Binding SignUpModel.DOB,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        
         <Label
             Content="Account Type"
             Style="{StaticResource LabelStyle}"/>
         <ComboBox
+            SelectedIndex="0"
             SelectedItem="{Binding SignUpModel.AccountType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
             <ComboBoxItem>Current</ComboBoxItem>
-            <ComboBoxItem IsSelected="True">Saving</ComboBoxItem>
+            <ComboBoxItem>Saving</ComboBoxItem>
         </ComboBox>
-
         <Grid Margin="10" Height="100">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-       
         <Button 
             Command="{Binding CreateAccountCommand}"
             Content="Register"
@@ -104,7 +89,6 @@
             Background="LightCyan"
             Foreground="DarkBlue"
             FontWeight="Bold"/>
-
         <Label Grid.Row="1"
             Content="{Binding SignUpModel.Warning,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
             Foreground="Red"
@@ -113,5 +97,4 @@
             HorizontalAlignment="Center"/>
         </Grid>
     </StackPanel>
-    
 </Window>

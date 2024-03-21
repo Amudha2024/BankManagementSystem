@@ -10,9 +10,9 @@ namespace BankManagementSystem.Model
 {
     public class UpdateUserDetail : Notifier
     {
-        TextBoxValidation textBoxValidation;
         #region private propoerties
 
+        TextBoxValidation textBoxValidation;
         private string name;
         private string userName;
         private string email;
@@ -24,7 +24,6 @@ namespace BankManagementSystem.Model
         private string dob;
         private string state;
         private string country;
-
 
         #endregion
 

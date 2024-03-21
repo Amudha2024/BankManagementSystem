@@ -13,7 +13,9 @@ namespace BankManagementSystem.ViewModel
     public  class DashBoardViewModel :Notifier
     {
         #region private
+
         private string userName;
+        
         #endregion
 
         #region public
@@ -22,6 +24,7 @@ namespace BankManagementSystem.ViewModel
             get { return userName; }
             set { userName = value; Notify(); }
         }
+
         #endregion
 
         #region Commands
@@ -46,7 +49,6 @@ namespace BankManagementSystem.ViewModel
         {
             UpdateUserDetailWindow update = new UpdateUserDetailWindow();
             update.ShowDialog();
-
         }
 
         public void ApplyLoan()
@@ -63,7 +65,6 @@ namespace BankManagementSystem.ViewModel
 
         public void CloseAllWindows()
         {
-
             for (int intCounter = App.Current.Windows.Count - 1; intCounter > 0; intCounter--)
             {
                 App.Current.Windows[intCounter].Close();
