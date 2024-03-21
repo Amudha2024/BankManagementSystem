@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace BankManagementSystem.View
 {
     /// <summary>
-    /// Interaction logic for PreviousAppliedLoanWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class PreviousAppliedLoanWindow : Window
+    public partial class MainWindow : Window
     {
-        public PreviousAppliedLoanWindow()
+        public MainWindow()
         {
             InitializeComponent();
         }

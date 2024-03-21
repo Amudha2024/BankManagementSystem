@@ -96,21 +96,21 @@
         <Button 
             Command="{Binding CreateAccountCommand}"
             Content="Register"
+            HorizontalContentAlignment="Center"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}}"
             Style="{StaticResource ButtonStyle}"
-            Margin="150,0"
+            Margin="150,0,110,0"
             BorderThickness="0"
             Background="LightCyan"
             Foreground="DarkBlue"
             FontWeight="Bold"/>
 
         <Label Grid.Row="1"
-            Content="{Binding S}"
-            Style="{StaticResource LabelStyle}"
+            Content="{Binding SignUpModel.Warning,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
             Foreground="Red"
             FontSize="14"
             FontWeight="Bold"
-            HorizontalAlignment="Center" Width="100"/>
+            HorizontalAlignment="Center"/>
         </Grid>
     </StackPanel>
     

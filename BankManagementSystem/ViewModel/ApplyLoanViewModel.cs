@@ -22,6 +22,8 @@ namespace BankManagementSystem.ViewModel
         #region Private Members 
         private ApplyLoanModel applyLoanModel;
 
+        private TextBoxValidation textBoxValidation;
+
         private SignUpHelper signUpHelper;
 
         private ObservableCollection<LoanDetail> loanDetails;
@@ -65,6 +67,7 @@ namespace BankManagementSystem.ViewModel
             userName = GlobalVariable.UserName;
             LoanDetails = new ObservableCollection<LoanDetail>();
             signUpHelper = new SignUpHelper();
+            textBoxValidation = new TextBoxValidation();
             ApplyLoanModel = new ApplyLoanModel();
             ApplyLoanCommand = new RelayCommand(ApplyLoan);
             CancelLoanCommand = new RelayCommand(CancelLoan);
@@ -117,8 +120,7 @@ namespace BankManagementSystem.ViewModel
 
         public void CancelLoan()
         {
-            DashBoardWindow dashWindow = new DashBoardWindow();
-            dashWindow.Show();
+            ApplyLoanModel = new ApplyLoanModel();
         }
 
         public async void PreviousAppliedLoanWindowOpen()
@@ -145,7 +147,26 @@ namespace BankManagementSystem.ViewModel
                 applyLoanModel.Warning = "All Fields are mandatory";
                 return false;
             }
-
+            if (textBoxValidation.AgeGreaterThan18(applyLoanModel.LoanDate))
+            {
+                applyLoanModel.Warning = "No Future Dates.Please Select the Current date";
+                return false;
+            }
+            if (textBoxValidation.LoanAmountValidation(applyLoanModel.LoanAmount))
+            {
+                applyLoanModel.Warning = "LoanAmount should be in number only ";
+                return false;
+            }
+            if (textBoxValidation.RoiValidation(applyLoanModel.ROI) )
+            {
+                applyLoanModel.Warning = "Rate of intrest should be only in number and update only two digits";
+                return false;
+            }
+            if (textBoxValidation.LoanDurationValidation(applyLoanModel.LoanDuration))
+            {
+                applyLoanModel.Warning = "Loan duration should be only in number and update only two digits";
+                return false;
+            }
             return true;
         }
 

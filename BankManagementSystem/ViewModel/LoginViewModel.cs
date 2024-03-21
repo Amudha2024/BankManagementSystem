@@ -53,33 +53,39 @@ namespace BankManagementSystem.ViewModel
         {
             try
             {
-                LoginDetail login = new LoginDetail()
+                if (LoginValidtion())
                 {
-                    UserName = LoginModel.UserName,
-                    Password = LoginModel.PassWord
-                };
-                GlobalVariable.UserName = LoginModel.UserName;
-
-                SignUpHelper signup = new SignUpHelper();
-                var data = await signup.LoginAgent(login);
-                if (data.ToString() == "Login Sucessfully")
-                {
-                    MessageBox.Show("Login Sucessfully");
-                    if (LoginModel.UserName.ToLower() == "admin")
+                    LoginDetail login = new LoginDetail()
                     {
-                        AdminDashboardWindow adminDashboard = new AdminDashboardWindow();
-                        adminDashboard.Show();
+                        UserName = LoginModel.UserName,
+                        Password = LoginModel.PassWord
+                    };
+
+                    GlobalVariable.UserName = LoginModel.UserName;
+
+                    SignUpHelper signup = new SignUpHelper();
+                    var data = await signup.LoginAgent(login);
+                    if (data.ToString() == "Login Sucessfully")
+                    {
+                        MessageBox.Show("Login Sucessfully");
+                        if (LoginModel.UserName.ToLower() == "admin")
+                        {
+                            AdminDashboardWindow adminDashboard = new AdminDashboardWindow();
+                            adminDashboard.Show();
+                        }
+                        else
+                        {
+                            DashBoardWindow dashBoard = new DashBoardWindow();
+                            dashBoard.ShowDialog();
+
+
+                        }
+
                     }
                     else
                     {
-                        DashBoardWindow dashBoard = new DashBoardWindow();
-                        dashBoard.ShowDialog();
+                        MessageBox.Show("User name and Password is incorrect");
                     }
-
-                }
-                else
-                {
-                    MessageBox.Show("User name and Password is incorrect");
                 }
             }
             catch (Exception ex)
@@ -98,6 +104,16 @@ namespace BankManagementSystem.ViewModel
             signupWindow.DataContext = view;
             signupWindow.ShowDialog();
             currentWindow.Show();
+        }
+
+        public bool LoginValidtion()
+        {
+            if (string.IsNullOrEmpty(LoginModel.UserName) && string.IsNullOrEmpty(LoginModel.PassWord))
+            {
+                MessageBox.Show("Please Update the UserName and Password");
+                return false;
+            }
+            return true;
         }
     }
 }

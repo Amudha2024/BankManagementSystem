@@ -27,8 +27,6 @@ namespace BankManagementSystem.ViewModel
         #region Commands
         public ICommand ApplyLoanCommand { get; }
 
-        public ICommand PreviousLoanCommand { get; }
-
         public ICommand UpdateAccountDetailsCommand { get; }
         public ICommand LogOutCommand { get; }
 
@@ -40,7 +38,6 @@ namespace BankManagementSystem.ViewModel
             userName = GlobalVariable.UserName;
             ApplyLoanCommand = new RelayCommand(ApplyLoan);
             LogOutCommand = new RelayCommand(LogOut);
-            PreviousLoanCommand = new RelayCommand(PreviousLoan);
             UpdateAccountDetailsCommand = new RelayCommand(UpdateAccount);
         }
 
@@ -58,25 +55,16 @@ namespace BankManagementSystem.ViewModel
             applyLoanWindow.ShowDialog();
         }
 
-        public void PreviousLoan()
-        {
-            PreviousAppliedLoanWindow previous = new PreviousAppliedLoanWindow();
-            previous.ShowDialog();
-        }
-
         public void LogOut() 
         {
             CloseAllWindows();
             MessageBox.Show("Logged Out Sucessfully");
-            LoginWindow login = new LoginWindow();
-            login.ShowDialog();
-
         }
 
         public void CloseAllWindows()
         {
 
-            for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
+            for (int intCounter = App.Current.Windows.Count - 1; intCounter > 0; intCounter--)
             {
                 App.Current.Windows[intCounter].Close();
             }

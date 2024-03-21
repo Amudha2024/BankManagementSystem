@@ -20,14 +20,14 @@
         <Label
             Content="UserName"
             Style="{StaticResource LabelStyle}"/>
-        <TextBox Text="{Binding LoginModel.UserName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Height="25"/>
+        <TextBox VerticalContentAlignment="Center"  Text="{Binding LoginModel.UserName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Height="25"/>
 
         <Label
             Content="Password"
             Style="{StaticResource LabelStyle}"/>
 
         <components:PassWordBoxControl
-            Password="{Binding LoginModel.PassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="25"
+            Password="{Binding LoginModel.PassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Height="25"
             ToolTip=""/>
 
         <Separator Margin="0,5,0,0"

@@ -118,7 +118,7 @@ namespace BankManagementSystem.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("exception");
+                    MessageBox.Show("There was an Exception");
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace BankManagementSystem.ViewModel
 
             if (string.IsNullOrEmpty(signUpModel.UserName) || string.IsNullOrEmpty(signUpModel.Password) || string.IsNullOrEmpty(signUpModel.Email) || string.IsNullOrEmpty(signUpModel.PAN) || string.IsNullOrEmpty(signUpModel.ContactNumber) || string.IsNullOrEmpty(signUpModel.DOB))
             {
-                signUpModel.Warning = "All Fields are mandatory";
+                signUpModel.Warning = "All Fields are Mandatory";
                 return false ;
             }
 

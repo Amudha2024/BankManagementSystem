@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace BankManagementSystem.Validations
 {
@@ -32,16 +33,18 @@ namespace BankManagementSystem.Validations
 
         public bool PanValidation(string Pan)
         {
-            Regex rg = new Regex(@"^[a-zA-Z0-9\s,]*$");
-            var g = !(rg.IsMatch(Pan) && (Pan.Length==10));
-            return g;
+            Regex regex = new Regex(@"^[a-zA-Z0-9\s,]*$");
+            var f = regex.IsMatch(Pan) && (Pan.Length == 10);
+            var result = !(regex.IsMatch(Pan) && (Pan.Length==10));
+            return result;
                
         }
 
-        public bool ContactNoValidation(string Pan)
+        public bool ContactNoValidation(string Contact)
         {
-            return !(Pan.Length == 10 &&
-                Pan.All(char.IsDigit) && Pan[0] != '0');
+            Regex reg = new Regex(@"^[0-9\s,]*$");
+            return !(Contact.Length == 10 &&
+                Contact.All(char.IsDigit) && Contact[0] != '0');
         }
 
         public bool EmailIDValidation(string emailId)
@@ -86,6 +89,24 @@ namespace BankManagementSystem.Validations
                 return false;
             }
             return true;
+        }
+
+        public bool LoanAmountValidation(string loanAmount)
+        {
+            var value = !(loanAmount.All(char.IsDigit));
+            return value;
+        }
+
+        public bool RoiValidation(string roi)
+        {
+            var value = !(roi.All(char.IsDigit)&&(roi.Length==2));
+            return value;
+        }
+
+        public bool LoanDurationValidation(string loanDuration)
+        {
+            var value = !(loanDuration.All(char.IsDigit) && (loanDuration.Length == 2));
+            return value;
         }
     }
 }
