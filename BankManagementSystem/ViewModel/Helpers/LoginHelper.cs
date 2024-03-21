@@ -13,21 +13,23 @@ namespace BankManagementSystem.ViewModel.Helpers
 {
     public class LoginHelper
     {
-        public const string BASE_URL = "http://localhost:5278/api/Authenticate/";
-
         public async Task<string> LoginAgent(LoginDetail loginDetail)
         {
-            string agent;
-            string URL = BASE_URL + "Login";
-
-            using (HttpClient httpClient = new HttpClient())
+            string agent = string.Empty;
+            string URL = Helper.BASE_URL + "Login";
+            try
             {
-                var response = await httpClient.PostAsJsonAsync(URL, loginDetail, default);
-                var json = await response.Content.ReadAsStringAsync();
-                agent = json.ToString();
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsJsonAsync(URL, loginDetail, default);
+                    var json = await response.Content.ReadAsStringAsync();
+                    agent = json.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
             }
             return agent;
         }
-
     }
 }

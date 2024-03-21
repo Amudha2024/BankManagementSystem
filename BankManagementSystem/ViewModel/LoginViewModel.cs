@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace BankManagementSystem.ViewModel
@@ -59,9 +60,7 @@ namespace BankManagementSystem.ViewModel
                         UserName = LoginModel.UserName,
                         Password = LoginModel.PassWord
                     };
-
                     GlobalVariable.UserName = LoginModel.UserName;
-
                     SignUpHelper signup = new SignUpHelper();
                     var data = await signup.LoginAgent(login);
                     if (data.ToString() == "Login Sucessfully")

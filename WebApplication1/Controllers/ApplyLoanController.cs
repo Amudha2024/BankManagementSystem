@@ -23,15 +23,13 @@ namespace BankManagementApi.Controllers
         [HttpGet("GetAllLoan")]
         public async Task<List<LoanDetail>> GetAllLoan()
         {
-            return await appData.LoanDetails?.ToListAsync();
+            return await appData.LoanDetails.ToListAsync();
         }
-
-
 
         [HttpGet("GetLoan/{userName}")]
         public async Task<List<LoanDetail>> GetLoan(string userName)
         {
-            return await appData.LoanDetails?.Where(x => x.UserName == userName).ToListAsync();
+            return await appData.LoanDetails.Where(x => x.UserName == userName).ToListAsync();
         }
 
         [HttpPost("SaveLoanDetail")]
@@ -47,11 +45,10 @@ namespace BankManagementApi.Controllers
                     LoanDuration = loanDeatailDto.LoanDuration,
                     LoanType = loanDeatailDto.LoanType,
                     RateOfInterst = loanDeatailDto.RateOfInterst,
-                   Status= loanDeatailDto.Status,
-                   Comment= loanDeatailDto.Comment,
-                   UserName = loanDeatailDto.UserName,
+                    Status = loanDeatailDto.Status,
+                    Comment = loanDeatailDto.Comment,
+                    UserName = loanDeatailDto.UserName,
                 };
-
                 await appData.LoanDetails.AddAsync(loan);
                 await appData.SaveChangesAsync();
                 return true;

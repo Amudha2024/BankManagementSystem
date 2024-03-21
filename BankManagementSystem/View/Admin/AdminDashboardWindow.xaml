@@ -30,7 +30,7 @@
                     </Grid.ColumnDefinitions>
                  <Label Content="Hello!"
                         Style="{StaticResource HeadingLabel}"/>
-                 <Label Content="{Binding UserNameGlobal,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                    <Label Content="{Binding UserNameGlobal,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                         Grid.Column="1"
                         Style="{StaticResource HeadingLabel}"
                         HorizontalAlignment="Left"
@@ -38,7 +38,7 @@
                 </Grid>
             </StackPanel>
             <Button 
-                Command="{Binding LogOutCommands}"
+                Command="{Binding LogOutCommand}"
                 Grid.Column="1"
                 Content="Log Out"
                 Style="{StaticResource ButtonStyle}"
@@ -52,7 +52,7 @@
         <Button Content="Applied Loan details"
                 Style="{StaticResource ButtonStyle}"
                 Margin="350,10,0,10"
-                Command=""/>
+                Command="{Binding GetLoanDetailsCommand}"/>
         <Grid  Height="350">
                <DataGrid
                 ItemsSource="{Binding AllLoanDetails}"

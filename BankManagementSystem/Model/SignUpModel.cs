@@ -20,7 +20,7 @@ namespace BankManagementSystem.Model
         private string contactNumber;
         private string pan;
         private string address;
-        private string accountType;
+        private string accountType = "Saving";
         private string dob;
         private string state;
         private string country;
@@ -44,12 +44,8 @@ namespace BankManagementSystem.Model
             get { return userName; }
             set
             {
-                userName = value; 
+                userName = value;
                 Notify();
-               // ClearErrors();
-               // bool result = textBoxValidation.UserNameValidation(value);
-            //    if (result)
-            //        AddError(nameof(UserName), "Invalid User name,It must not contain any special character except underscore(_)");
             }
         }
 
@@ -60,20 +56,17 @@ namespace BankManagementSystem.Model
             {
                 password = value; Notify();
                 ClearErrors();
-                //bool result = textBoxValidation.PasswordValidation(value);
-                //if (result)
-                   // AddError(nameof(Password), "Password must be in between 8-20 and must have 1 caps,1 small and 1 special character");
             }
         }
 
         public string Email
         {
             get { return email; }
-            set { email = value; Notify();
+            set
+            {
+                email = value; Notify();
                 ClearErrors();
                 bool result = textBoxValidation.EmailIDValidation(value);
-                //if (result)
-                  //  AddError(nameof(UserName), "Invalid Mail ID");
             }
         }
 
@@ -114,12 +107,6 @@ namespace BankManagementSystem.Model
         {
             get { return pan; }
             set { pan = value; Notify();
-                ClearErrors();
-                //bool result = textBoxValidation.PanValidation(value);
-                //if (result)
-                  //  AddError(nameof(UserName), "InValid PAN Number,1st digit should not be 0 and must have 10 digits.");
-
-
             }
         }
 
@@ -127,20 +114,15 @@ namespace BankManagementSystem.Model
         {
             get { return contactNumber; }
             set { contactNumber = value; Notify();
-               // bool result = textBoxValidation.ContactNoValidation(value);
-                //if (result)
-                  //  AddError(nameof(UserName), "InValid PAN Number,1st digit should not be 0 and must have 10 digits.");
-
             }
         }
 
         public string DOB
         {
             get { return dob; }
-            set { dob = value; Notify();
-                //bool result = textBoxValidation.AgeGreaterThan18(value);
-                //if (result)
-                   // AddError(nameof(UserName), "No Future Date Please and Age > 18");
+            set
+            {
+                dob = value; Notify();
             }
         }
 

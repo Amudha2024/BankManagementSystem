@@ -46,12 +46,11 @@ namespace BankManagementApi.Controllers
                 else
                 {
                     return "Register Failed";
-                    //return result.Errors.FirstOrDefault().Description;
                 }
             }
             catch 
             {
-
+                
             }
             return "Register Failed";
         }

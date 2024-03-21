@@ -2,7 +2,6 @@ using BankManagementApi.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using BankManagementApi.Data;
-using BankManagementApi.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 

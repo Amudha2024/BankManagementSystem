@@ -20,7 +20,7 @@ namespace BankManagementSystem.ViewModel.Helpers
         {
             UpdateUserDetail userDetail;
 
-            string URL = BASE_URL + "GetUserDetail/" + userName;
+            string URL = Helper.BASE_URL + "GetUserDetail/" + userName;
 
             using (HttpClient httpClient = new HttpClient())
             {
@@ -34,17 +34,22 @@ namespace BankManagementSystem.ViewModel.Helpers
 
         public async Task<string> UpdateUserDetail(UpdateUserDetail userDetail)
         {
-            string agent;
-            string URL = BASE_URL + "UpdateUserDetail";
-
-            using (HttpClient httpClient = new HttpClient())
+            string agent=string.Empty;
+            string URL = Helper.BASE_URL + "UpdateUserDetail";
+            try
             {
-                var response = await httpClient.PutAsJsonAsync(URL, userDetail, default);
-                var json = await response.Content.ReadAsStringAsync();
-                agent = json.ToString();
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PutAsJsonAsync(URL, userDetail, default);
+                    var json = await response.Content.ReadAsStringAsync();
+                    agent = json.ToString();
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
             return agent;
         }
-
     }
 }

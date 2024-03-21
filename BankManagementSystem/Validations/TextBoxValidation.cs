@@ -110,19 +110,19 @@ namespace BankManagementSystem.Validations
         public bool Addressvalidation(string address)
         {
             Regex regex = new Regex(@"^[a-zA-Z0-9\s,]*$");
-            return regex.IsMatch(address);
+            return !(regex.IsMatch(address));
         }
 
         public bool CountryValidation(string country)
         {
             Regex regex = new Regex(@"^[a-zA-Z\s,]*$");
-            return regex.IsMatch(country);
+            return !(regex.IsMatch(country));
         }
 
         public bool StateValidationValidation(string State)
         {
             Regex regex = new Regex(@"^[a-zA-Z\s,]*$");
-            return regex.IsMatch(State);
+            return !(regex.IsMatch(State));
         }
     }
 }

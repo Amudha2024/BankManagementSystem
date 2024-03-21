@@ -13,16 +13,12 @@ namespace BankManagementSystem.Model
 
         private bool isCheck;
 
-        TextBoxValidation textBoxvalidation;
-
         public string UserName
         {
             get { return userName; }
-            set { userName = value; Notify();
-                ClearErrors();
-                //bool result = textBoxvalidation.UserNameValidation(value);
-                //if (result)
-                  //  AddError(nameof(UserName), "Invalid User name,It must not contain any special character except underscore(_)");
+            set
+            {
+                userName = value; Notify();
             }
         }
 
@@ -33,7 +29,6 @@ namespace BankManagementSystem.Model
             {
                 password = value;
                 Notify();
-                ClearErrors();
             }
         }
 
@@ -57,9 +52,5 @@ namespace BankManagementSystem.Model
             }
         }
 
-        public LoginModel()
-        {
-            textBoxvalidation= new TextBoxValidation();
-        }
     }
 }

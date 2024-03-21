@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:BankManagementSystem.ViewModel"
         mc:Ignorable="d"
         Style="{StaticResource WindowStyle}"
-        Title="UpdateUserDetailWindow" Height="650" Width="500">
+        Title="UpdateUserDetailWindow" Height="650" Width="500" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -16,7 +16,7 @@
     </Window.Resources>
     
     <StackPanel DataContext="{StaticResource UserDetailVm}" Margin="20">
-        <Label Content="{Binding UpdateUserDetail.UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="Red"/>
+        <Label Content="{Binding UpdateUserDetail.UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource HeadingLabel}"/>
         <Separator
             Background="Black"/>
         <Label
@@ -63,7 +63,7 @@
         <Label
             Content="Account Type"
             Style ="{StaticResource LabelStyle}"/>
-        <ComboBox IsEditable="False" SelectedItem="{Binding UpdateUserDetail.AccountType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox IsEnabled="False" Text="{Binding UpdateUserDetail.AccountType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         <Button
             Command="{Binding UpdateUserDetailCommand}"
             Content="|Update Details!"

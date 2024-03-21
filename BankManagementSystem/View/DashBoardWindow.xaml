@@ -27,9 +27,9 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                 <Label Content="Hello!"
+                 <Label Content="  Hello!"
                         Style="{StaticResource HeadingLabel}"/>
-                 <Label Content="{Binding UserNameGlobal,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"
+                 <Label Content="{Binding UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"
                         Style="{StaticResource HeadingLabel}"
                         HorizontalAlignment="Left"/>
                 </Grid>
@@ -40,6 +40,7 @@
             <Button
                 Grid.Column="2"
                 Content="Log Out"
+                Width="100"
                 Command="{Binding LogOutCommand}"
                 Margin="10,0"
                 FontWeight="Bold"

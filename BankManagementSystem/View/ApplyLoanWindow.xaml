@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Style="{StaticResource WindowStyle}" 
         ResizeMode="NoResize"
-        Title="ApplyLoan" Height="650" Width="500" 
+        Title="ApplyLoan" Height="650" Width="600" 
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -93,7 +93,7 @@
                     <DataGridTextColumn Header="ROI" Width="*" Binding="{Binding RateOfInterst}"/>
                     <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding  LoanDuration}"/>
                     <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Status}"/>
-                    <DataGridTextColumn Header="Comment" Width="*" Binding="{Binding Status}"/>
+                    <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Comment}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

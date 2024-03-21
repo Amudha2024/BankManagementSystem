@@ -47,7 +47,7 @@ namespace BankManagementSystem.ViewModel
             {
                 signUpModel = new SignUpHelper();
                 UpdateUserDetail = new UpdateUserDetail();
-                UpdateUserDetail.UserName = "Amudha";
+                UpdateUserDetail.UserName = GlobalVariable.UserName;
                 GetUserDetails();
                 UpdateUserDetailCommand = new RelayCommand(UdpateDetails);
             }

@@ -61,7 +61,7 @@ namespace BankManagementSystem.ViewModel
             var loanList = AllLoanDetails.FirstOrDefault(x => x.LoanId == GlobalVariable.LoanID);
             if (loanList == null) return;
             var checkValue = AllLoanDetails.FirstOrDefault(x => x.LoanId == GlobalVariable.LoanID).Status;
-            if (checkValue.ToLower() != "Pending") 
+            if (checkValue.ToLower() != "pending") 
             {
                 MessageBox.Show("Cant Change the status");
                 return;
@@ -80,7 +80,7 @@ namespace BankManagementSystem.ViewModel
             var loanList = AllLoanDetails.FirstOrDefault(x => x.LoanId == GlobalVariable.LoanID);
             if (loanList == null) return;
             var checkValue = AllLoanDetails.FirstOrDefault(x => x.LoanId == GlobalVariable.LoanID).Status;
-            if (checkValue.ToLower() != "Pending")
+            if (checkValue.ToLower() != "pending")
             {
                 MessageBox.Show("Cant Change the status");
                 return;
@@ -123,7 +123,7 @@ namespace BankManagementSystem.ViewModel
 
         public void CloseAllWindows()
         {
-            for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
+            for (int intCounter = App.Current.Windows.Count - 1; intCounter > 0; intCounter--)
             {
                 App.Current.Windows[intCounter].Close();
             }

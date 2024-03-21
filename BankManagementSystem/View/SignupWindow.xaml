@@ -67,13 +67,11 @@
         <Label
             Content="Account Type"
             Style="{StaticResource LabelStyle}"/>
-        <ComboBox
-            SelectedIndex="0"
-            SelectedItem="{Binding SignUpModel.AccountType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+        <ComboBox SelectedItem="{Binding SignUpModel.AccountType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
             <ComboBoxItem>Current</ComboBoxItem>
-            <ComboBoxItem>Saving</ComboBoxItem>
+            <ComboBoxItem IsSelected="True">Saving</ComboBoxItem>
         </ComboBox>
-        <Grid Margin="10" Height="100">
+        <Grid Margin="10" Height="94">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -84,15 +82,14 @@
             HorizontalContentAlignment="Center"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}}"
             Style="{StaticResource ButtonStyle}"
-            Margin="150,0,110,0"
+            Margin="110,0,110,0"
             BorderThickness="0"
             Background="LightCyan"
             Foreground="DarkBlue"
             FontWeight="Bold"/>
         <Label Grid.Row="1"
             Content="{Binding SignUpModel.Warning,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-            Foreground="Red"
-            FontSize="14"
+            FontSize="15"
             FontWeight="Bold"
             HorizontalAlignment="Center"/>
         </Grid>

@@ -19,15 +19,14 @@ namespace BankManagementSystem.ViewModel.Helpers
         public async Task<List<LoanDetail>> GetAllUserLoan()
         {
             List<LoanDetail> agent = null;
-            string URL = BASE_URL_Loan + "GetAllLoan";
+            string URL = Helper.BASE_URL_Loan + "GetAllLoan";
             try
             {
                 using (HttpClient httpClient = new HttpClient())
                 {
                     var response = await httpClient.GetAsync(URL);
                     var json = await response.Content.ReadAsStringAsync();
-                    agent = JsonConvert.DeserializeObject<List<LoanDetail>>(json);
-
+                    agent = JsonConvert.DeserializeObject<List<LoanDetail>>(json).ToList();
                 }
             }
             catch (Exception ex) { }
@@ -36,30 +35,42 @@ namespace BankManagementSystem.ViewModel.Helpers
 
         public async Task<string> ApproveLoanStatus(LoanDetail loan)
         {
-            string agent;
-            string URL = BASE_URL_Loan + "UpdateLoanStatus";
+            string agent = string.Empty;
+            string URL = Helper.BASE_URL_Loan + "UpdateLoanStatus";
             loan.Status = "Approved";
-
-            using (HttpClient httpClient = new HttpClient())
+            try
             {
-                var response = await httpClient.PutAsJsonAsync(URL, loan, default);
-                var json = await response.Content.ReadAsStringAsync();
-                agent = json;
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PutAsJsonAsync(URL, loan, default);
+                    var json = await response.Content.ReadAsStringAsync();
+                    agent = json;
+                }
+            }
+            catch (Exception ex)
+            {
+                agent = null;
             }
             return agent;
         }
 
         public async Task<string> RejectLoanStatus(LoanDetail loan)
         {
-            string agent;
-            string URL = BASE_URL_Loan + "UpdateLoanStatus";
+            string agent = string.Empty;
+            string URL =  Helper.BASE_URL_Loan + "UpdateLoanStatus";
             loan.Status = "Rejected";
-
-            using (HttpClient httpClient = new HttpClient())
+            try
             {
-                var response = await httpClient.PutAsJsonAsync(URL, loan, default);
-                var json = await response.Content.ReadAsStringAsync();
-                agent = json;
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PutAsJsonAsync(URL, loan, default);
+                    var json = await response.Content.ReadAsStringAsync();
+                    agent = json;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
             return agent;
         }

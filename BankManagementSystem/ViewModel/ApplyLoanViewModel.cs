@@ -79,25 +79,28 @@ namespace BankManagementSystem.ViewModel
             {
                 if (LoanValidation())
                 {
-                    applyLoanModel.Status = "Pending..";
-                    LoanDetail loan = new LoanDetail()
+                    applyLoanModel.Status = "Pending";
+                    LoanDetail loan = new LoanDetail  ()
                     {
-                        LoanId = 1,
+                        LoanId = 0,
+                        UserName = GlobalVariable.UserName,
                         LoanType = "Home",
                         LoanDate = DateTime.Today,
                         LoanAmount = double.Parse(ApplyLoanModel.LoanAmount),
                         LoanDuration = int.Parse(ApplyLoanModel.LoanDuration),
                         RateOfInterst = float.Parse(ApplyLoanModel.ROI),
                         Status = applyLoanModel.Status,
+                        Comment = string.Empty
                     };
                     
                     var result = await signUpHelper.SaveLoanDetail(loan);
                     if (result)
                     {
                         MessageBox.Show("Loan Applied Sucessfully");
-                        var loanList = await signUpHelper.GetUserLoan("Amudha");
+                        var loanList = await signUpHelper.GetUserLoan(GlobalVariable.UserName);
                         if (loanList != null)
                         {
+                            LoanDetails.Clear();
                             foreach (var item in loanList)
                             {
                                 LoanDetails.Add(item);
@@ -125,7 +128,7 @@ namespace BankManagementSystem.ViewModel
         {
             loanDetails.Clear();
             SignUpHelper sign = new SignUpHelper();
-           var  list = await sign.GetUserLoan("Amudha");
+           var  list = await sign.GetUserLoan(userName);
             foreach (var item in list)
             {
                 loanDetails.Add(item);
@@ -134,6 +137,7 @@ namespace BankManagementSystem.ViewModel
 
         public bool LoanValidation()
         {
+            applyLoanModel.Warning = string.Empty;
             CheckForIsNullOrEmpty(nameof(applyLoanModel.LoanType), applyLoanModel.LoanType);
             CheckForIsNullOrEmpty(nameof(applyLoanModel.LoanAmount), applyLoanModel.LoanAmount);
             CheckForIsNullOrEmpty(nameof(applyLoanModel.ROI), applyLoanModel.ROI);
@@ -145,7 +149,7 @@ namespace BankManagementSystem.ViewModel
                 applyLoanModel.Warning = "All Fields are mandatory";
                 return false;
             }
-            if (textBoxValidation.AgeGreaterThan18(applyLoanModel.LoanDate))
+            if (textBoxValidation.DateValidation(applyLoanModel.LoanDate))
             {
                 applyLoanModel.Warning = "No Future Dates.Please Select the Current date";
                 return false;

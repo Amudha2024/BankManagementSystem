@@ -23,14 +23,20 @@ namespace BankManagementSystem.ViewModel.Helpers
 
         public async Task<string> CreateAccount(NewUserDetails userDetail)
         {
-            string agent;
-            string URL = BASE_URL + POST_URL;
-
-            using (HttpClient httpClient = new HttpClient())
+            string agent = string.Empty;
+            string URL = Helper.BASE_URL + Helper.POST_URL;
+            try
             {
-                var response = await httpClient.PostAsJsonAsync(URL, userDetail, default);
-                var json = await response.Content.ReadAsStringAsync();
-                agent = json.ToString();
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsJsonAsync(URL, userDetail, default);
+                    var json = await response.Content.ReadAsStringAsync();
+                    agent = json.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
             return agent;
         }

@@ -13,13 +13,10 @@ namespace BankManagementSystem.ViewModel.Helpers
 {
     public class ApplyLoanHelper
     {
-        public const string BASE_URL = "http://localhost:5278/api/Authenticate/";
-        public const string BASE_URL_Loan = "http://localhost:5278/api/ApplyLoan/";
-       
         public async Task<bool> SaveLoanDetail(LoanDetail loan)
         {
             string agent;
-            string URL = BASE_URL + "SaveLoanDetail";
+            string URL = Helper.BASE_URL + "SaveLoanDetail";
 
             using (HttpClient httpClient = new HttpClient())
             {
@@ -31,13 +28,10 @@ namespace BankManagementSystem.ViewModel.Helpers
             // return agent;
         }
 
-
         public async Task<List<LoanDetail>> GetUserLoan(string user)
         {
-            List<LoanDetail> agent = null;
-
-
-            string URL = BASE_URL_Loan + "GetLoan/" + user;
+            List<LoanDetail> agent = new List<LoanDetail>();
+            string URL = Helper.BASE_URL_Loan + "GetLoan/" + user;
             try
             {
                 using (HttpClient httpClient = new HttpClient())
@@ -45,7 +39,6 @@ namespace BankManagementSystem.ViewModel.Helpers
                     var response = await httpClient.GetAsync(URL);
                     var json = await response.Content.ReadAsStringAsync();
                     agent = JsonConvert.DeserializeObject<List<LoanDetail>>(json);
-
                 }
             }
             catch (Exception ex)
