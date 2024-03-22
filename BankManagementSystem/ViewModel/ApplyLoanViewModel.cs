@@ -24,8 +24,6 @@ namespace BankManagementSystem.ViewModel
 
         private TextBoxValidation textBoxValidation;
 
-        private SignUpHelper signUpHelper;
-
         private ObservableCollection<LoanDetail> loanDetails;
 
         private string userName;
@@ -64,7 +62,6 @@ namespace BankManagementSystem.ViewModel
         {
             userName = GlobalVariable.UserName;
             LoanDetails = new ObservableCollection<LoanDetail>();
-            signUpHelper = new SignUpHelper();
             textBoxValidation = new TextBoxValidation();
             ApplyLoanModel = new ApplyLoanModel();
             ApplyLoanCommand = new RelayCommand(ApplyLoan);
@@ -93,11 +90,11 @@ namespace BankManagementSystem.ViewModel
                         Comment = string.Empty
                     };
                     
-                    var result = await signUpHelper.SaveLoanDetail(loan);
+                    var result = await ApplyLoanHelper.SaveLoanDetail(loan);
                     if (result)
                     {
                         MessageBox.Show("Loan Applied Sucessfully");
-                        var loanList = await signUpHelper.GetUserLoan(GlobalVariable.UserName);
+                        var loanList = await ApplyLoanHelper.GetUserLoan(GlobalVariable.UserName);
                         if (loanList != null)
                         {
                             LoanDetails.Clear();
@@ -127,8 +124,7 @@ namespace BankManagementSystem.ViewModel
         public async void PreviousAppliedLoanWindowOpen()
         {
             loanDetails.Clear();
-            SignUpHelper sign = new SignUpHelper();
-           var  list = await sign.GetUserLoan(userName);
+            var  list = await ApplyLoanHelper.GetUserLoan(userName);
             foreach (var item in list)
             {
                 loanDetails.Add(item);

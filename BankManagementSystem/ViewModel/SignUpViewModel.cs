@@ -100,9 +100,8 @@ namespace BankManagementSystem.ViewModel
                         PAN = signUpModel.PAN,
                         ContactNumber = long.Parse(signUpModel.ContactNumber),
                         Dob = DateTime.Parse(mydate),
-                        AccountType = signUpModel.AccountType.Split(":")[1].Trim(),
+                        AccountType = signUpModel.AccountType.Split(":")[0].Trim(),
                     };
-                    
                     SignUpHelper helper = new SignUpHelper();
                     var createAccountStatus = await helper.CreateAccount(user);
                     if (createAccountStatus.ToString() == "Register Sucessfully")
@@ -178,7 +177,7 @@ namespace BankManagementSystem.ViewModel
             }
             if (textBoxValidation.AgeGreaterThan18(signUpModel.DOB))
             {
-                signUpModel.Warning = "No Future Date Please and Age > 18.";
+                signUpModel.Warning = "No Future Date Please Select Age > 18.";
                 return false;
             }
             return true;

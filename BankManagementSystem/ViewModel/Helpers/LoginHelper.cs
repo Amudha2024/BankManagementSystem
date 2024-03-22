@@ -13,7 +13,7 @@ namespace BankManagementSystem.ViewModel.Helpers
 {
     public class LoginHelper
     {
-        public async Task<string> LoginAgent(LoginDetail loginDetail)
+        public static async Task<string> LoginAgent(LoginDetail loginDetail)
         {
             string agent = string.Empty;
             string URL = Helper.BASE_URL + "Login";

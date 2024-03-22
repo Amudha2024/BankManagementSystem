@@ -74,7 +74,6 @@
                     <DataGridTextColumn Header="Loan ROI" Width="*" Binding="{Binding RateOfInterst}"/>
                     <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding LoanDuration}"/>
                     <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Status}"/>
-                    <DataGridTextColumn Header="Comments" Width="*" Binding="{Binding Status}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

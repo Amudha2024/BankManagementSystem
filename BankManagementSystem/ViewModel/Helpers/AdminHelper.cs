@@ -11,12 +11,9 @@ using System.Net.Http.Json;
 
 namespace BankManagementSystem.ViewModel.Helpers
 {
-    public class AdminHelper
+    public static class AdminHelper
     {
-        public const string BASE_URL = "http://localhost:5278/api/Authenticate/";
-        public const string BASE_URL_Loan = "http://localhost:5278/api/ApplyLoan/";
-
-        public async Task<List<LoanDetail>> GetAllUserLoan()
+        public static async Task<List<LoanDetail>> GetAllUserLoan()
         {
             List<LoanDetail> agent = null;
             string URL = Helper.BASE_URL_Loan + "GetAllLoan";
@@ -33,7 +30,7 @@ namespace BankManagementSystem.ViewModel.Helpers
             return agent;
         }
 
-        public async Task<string> ApproveLoanStatus(LoanDetail loan)
+        public static async Task<string> ApproveLoanStatus(LoanDetail loan)
         {
             string agent = string.Empty;
             string URL = Helper.BASE_URL_Loan + "UpdateLoanStatus";
@@ -54,7 +51,7 @@ namespace BankManagementSystem.ViewModel.Helpers
             return agent;
         }
 
-        public async Task<string> RejectLoanStatus(LoanDetail loan)
+        public static async Task<string> RejectLoanStatus(LoanDetail loan)
         {
             string agent = string.Empty;
             string URL =  Helper.BASE_URL_Loan + "UpdateLoanStatus";

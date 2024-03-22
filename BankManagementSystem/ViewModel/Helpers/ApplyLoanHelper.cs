@@ -11,9 +11,9 @@ using System.Net.Http.Json;
 
 namespace BankManagementSystem.ViewModel.Helpers
 {
-    public class ApplyLoanHelper
+    public static class ApplyLoanHelper
     {
-        public async Task<bool> SaveLoanDetail(LoanDetail loan)
+        public static async Task<bool> SaveLoanDetail(LoanDetail loan)
         {
             string agent;
             string URL = Helper.BASE_URL + "SaveLoanDetail";
@@ -25,10 +25,9 @@ namespace BankManagementSystem.ViewModel.Helpers
                 agent = json;
             }
             return true;
-            // return agent;
         }
 
-        public async Task<List<LoanDetail>> GetUserLoan(string user)
+        public static async Task<List<LoanDetail>> GetUserLoan(string user)
         {
             List<LoanDetail> agent = new List<LoanDetail>();
             string URL = Helper.BASE_URL_Loan + "GetLoan/" + user;

@@ -62,7 +62,7 @@
                         Command="{Binding CancelLoanCommand}"/>
                 <Button Content="Previous Loan"
                         Style="{StaticResource ButtonStyle}" 
-                        Width="200"
+                        Width="130"
                         Margin="15,15"
                         VerticalContentAlignment="Center"
                         Command="{Binding PreviousAppliedLoanCommand}"/>
@@ -86,14 +86,13 @@
                 ScrollViewer.HorizontalScrollBarVisibility="Visible"
                 ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,0,-17" Grid.RowSpan="2">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Width="auto" Binding="{Binding LoanId}"/>
+                    <DataGridTextColumn Header="Id" Width="Auto" Binding="{Binding LoanId}"/>
                     <DataGridTextColumn Header="Type" Width="*" Binding="{Binding LoanType}"/>
                     <DataGridTextColumn Header="Amount" Width="*" Binding="{Binding LoanAmount}"/>
                     <DataGridTextColumn Header="Date" Width="*" Binding="{Binding LoanDate,StringFormat=d}"/>
                     <DataGridTextColumn Header="ROI" Width="*" Binding="{Binding RateOfInterst}"/>
                     <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding  LoanDuration}"/>
                     <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Status}"/>
-                    <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Comment}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

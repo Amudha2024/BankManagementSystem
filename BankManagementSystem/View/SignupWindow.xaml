@@ -9,10 +9,6 @@
         mc:Ignorable="d" ResizeMode="NoResize" Title="Register Here"
         Style="{StaticResource WindowStyle}" Height="680" Width="500" WindowStartupLocation="CenterScreen">
     
-    <Window.Resources>
-        <vm:SignUpViewModel x:Key="SignUpVm"/>
-    </Window.Resources>
-    
     <StackPanel Margin="10" >
         <Label
             Content="Name"
@@ -33,6 +29,7 @@
         <Label
             Content="PassWord"
             Style="{StaticResource LabelStyle}"/>
+        
         <components:PassWordBoxControl Password="{Binding SignUpModel.Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         <Label
             Content="Address"

@@ -66,9 +66,9 @@ namespace BankManagementSystem.ViewModel
                 MessageBox.Show("Cant Change the status");
                 return;
             }
-            var approve = await signUp.ApproveLoanStatus(loanList);
+            var approve = await AdminHelper.ApproveLoanStatus(loanList);
             AllLoanDetails.Clear();
-            var list = await signUp.GetAllUserLoan();
+            var list = await AdminHelper.GetAllUserLoan();
             foreach (var item in list)
             {
                 AllLoanDetails.Add(item);
@@ -85,9 +85,9 @@ namespace BankManagementSystem.ViewModel
                 MessageBox.Show("Cant Change the status");
                 return;
             }
-            var reject = await signUp.RejectLoanStatus(loanList);
+            var reject = await AdminHelper.RejectLoanStatus(loanList);
             AllLoanDetails.Clear();
-            var list = await signUp.GetAllUserLoan();
+            var list = await AdminHelper.GetAllUserLoan();
             foreach (var item in list)
             {
                 AllLoanDetails.Add(item);
@@ -98,8 +98,7 @@ namespace BankManagementSystem.ViewModel
         {
             try
             {
-                SignUpHelper sign = new SignUpHelper();
-                var result = await sign.GetAllUserLoan();
+                var result = await AdminHelper.GetAllUserLoan();
                 if (result.Count == 0)
                     MessageBox.Show("No Record Found");
                 else

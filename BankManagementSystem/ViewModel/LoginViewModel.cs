@@ -61,8 +61,7 @@ namespace BankManagementSystem.ViewModel
                         Password = LoginModel.PassWord
                     };
                     GlobalVariable.UserName = LoginModel.UserName;
-                    SignUpHelper signup = new SignUpHelper();
-                    var data = await signup.LoginAgent(login);
+                    var data = await LoginHelper.LoginAgent(login);
                     if (data.ToString() == "Login Sucessfully")
                     {
                         MessageBox.Show("Login Sucessfully");

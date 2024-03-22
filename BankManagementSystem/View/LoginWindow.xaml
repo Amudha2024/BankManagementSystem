@@ -8,7 +8,7 @@
         xmlns:components="clr-namespace:BankManagementSystem.View.Components"
         mc:Ignorable="d"
           Style="{StaticResource WindowStyle}"
-        Title="OnLine Login" Height="650" Width="500" WindowStartupLocation="CenterScreen" WindowState="Normal">
+        Title="OnLine Login" Height="650" Width="500" WindowStartupLocation="CenterScreen">
     
     <Window.Resources>
         <vm:LoginViewModel x:Key="Login"/>

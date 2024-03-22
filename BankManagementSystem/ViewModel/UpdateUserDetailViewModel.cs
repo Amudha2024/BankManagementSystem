@@ -20,8 +20,6 @@ namespace BankManagementSystem.ViewModel
 
         private UpdateUserDetail updateUserDetail;
 
-        private SignUpHelper signUpModel;
-
         #endregion
 
         #region public Members
@@ -45,7 +43,6 @@ namespace BankManagementSystem.ViewModel
         {  
             if (!DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
             {
-                signUpModel = new SignUpHelper();
                 UpdateUserDetail = new UpdateUserDetail();
                 UpdateUserDetail.UserName = GlobalVariable.UserName;
                 GetUserDetails();
@@ -57,7 +54,7 @@ namespace BankManagementSystem.ViewModel
         private async void GetUserDetails()
         {
 
-            var getUser = await signUpModel.GetUserDetail(updateUserDetail.UserName);
+            var getUser = await UpdateHelper.GetUserDetail(updateUserDetail.UserName);
             if (getUser != null)
             {
                 updateUserDetail.Name = getUser.Name;
@@ -74,7 +71,7 @@ namespace BankManagementSystem.ViewModel
 
         private async void UdpateDetails()
         {
-            var updatedValue = await signUpModel.UpdateUserDetail(updateUserDetail);
+            var updatedValue = await UpdateHelper.UpdateUserDetail(updateUserDetail);
             if(updatedValue != null)
             {
                 MessageBox.Show("User Details are Updated");
