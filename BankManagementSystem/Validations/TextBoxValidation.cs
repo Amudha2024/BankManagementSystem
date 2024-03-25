@@ -7,7 +7,6 @@ namespace BankManagementSystem.Validations
     public class TextBoxValidation
     {
         string[] list = new[] { "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "\"" };
-        Regex regexValue = new Regex(@"^(?=.*\d)(?=.*[!&$%&?@-]).*$");
         public bool NameValidation(string name)
         {
             return (list.Contains(name));
@@ -48,19 +47,19 @@ namespace BankManagementSystem.Validations
 
         public bool LoanAmountValidation(string loanAmount)
         {
-            var value = !(loanAmount.All(char.IsDigit) && regexValue.IsMatch(loanAmount));
+            var value = !(loanAmount.All(char.IsDigit) &&(loanAmount.Length == 2));
             return value;
         }
 
         public bool RoiValidation(string roi)
         {
-            var value = !(roi.All(char.IsDigit)&&(roi.Length==2) && regexValue.IsMatch(roi));
+            var value = !(roi.All(char.IsDigit) && (roi.Length == 2));
             return value;
         }
 
         public bool LoanDurationValidation(string loanDuration)
         {
-            var value = !(loanDuration.All(char.IsDigit) && (loanDuration.Length == 2) && list.Contains(loanDuration) && !loanDuration.Contains("-"));
+            var value = !(loanDuration.All(char.IsDigit));
             return value;
         }
 
