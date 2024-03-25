@@ -175,9 +175,9 @@ namespace BankManagementSystem.ViewModel
                 signUpModel.Warning = "Invalid State.";
                 return false;
             }
-            if (textBoxValidation.AgeGreaterThan18(signUpModel.DOB))
+            if (DateValidation.AgeGreaterThan18(signUpModel.DOB))
             {
-                signUpModel.Warning = "No Future Date Please Select Age > 18.";
+                signUpModel.Warning = "user age must be greater than 18";
                 return false;
             }
             return true;

@@ -148,7 +148,7 @@ namespace BankManagementSystem.Model
             set
             {
                 dob = value; Notify();
-                bool result = textBoxValidation.AgeGreaterThan18(value);
+                bool result = DateValidation.AgeGreaterThan18(value);
                 if (result)
                     AddError(nameof(UserName), "No Future Date Please and Age > 18");
             }

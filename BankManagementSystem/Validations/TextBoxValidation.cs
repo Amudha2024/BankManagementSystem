@@ -7,7 +7,7 @@ namespace BankManagementSystem.Validations
     public class TextBoxValidation
     {
         string[] list = new[] { "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "\"" };
-       
+        Regex regexValue = new Regex(@"^(?=.*\d)(?=.*[!&$%&?@-]).*$");
         public bool NameValidation(string name)
         {
             return (list.Contains(name));
@@ -46,64 +46,21 @@ namespace BankManagementSystem.Validations
             return !regex.IsMatch(emailId);
         }
 
-        public bool DateValidation(string date)
-        {
-            if (string.IsNullOrEmpty(date))
-            {
-                return false;
-            }
-            string val = date.Contains("-") ? "-" : "/";
-            string[] dates = date.Split(" ")[0].Split(val);
-            string myDate = dates[1] + "-" + dates[0] + "-" + dates[2];
-            DateTime now = DateTime.Now.Date;
-            DateTime selectedDate = DateTime.Parse(myDate);
-            int res = DateTime.Compare(now, selectedDate);
-
-            if (res < 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool AgeGreaterThan18(string date)
-        {
-            if (string.IsNullOrEmpty(date))
-            {
-                return false;
-            }
-            string val = date.Contains("-") ? "-" : "/";
-            string[] dates = date.Split(" ")[0].Split(val);
-            string myDate = dates[1] + "-" + dates[0] + "-" + dates[2];
-            DateTime now = DateTime.Now.Date;
-            DateTime selectedDate = DateTime.Parse(myDate);
-            int age = now.Year - selectedDate.Year;
-
-            if (age >= 18)
-            {
-                return false;
-            }
-            return true;
-        }
-
         public bool LoanAmountValidation(string loanAmount)
         {
-            var value = !(loanAmount.All(char.IsDigit));
+            var value = !(loanAmount.All(char.IsDigit) && regexValue.IsMatch(loanAmount));
             return value;
         }
 
         public bool RoiValidation(string roi)
         {
-            var value = !(roi.All(char.IsDigit)&&(roi.Length==2));
+            var value = !(roi.All(char.IsDigit)&&(roi.Length==2) && regexValue.IsMatch(roi));
             return value;
         }
 
         public bool LoanDurationValidation(string loanDuration)
         {
-            var value = !(loanDuration.All(char.IsDigit) && (loanDuration.Length == 2));
+            var value = !(loanDuration.All(char.IsDigit) && (loanDuration.Length == 2) && list.Contains(loanDuration) && !loanDuration.Contains("-"));
             return value;
         }
 

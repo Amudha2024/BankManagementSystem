@@ -76,13 +76,11 @@
             <DataGrid
                 ItemsSource="{Binding LoanDetails}"
                 AutoGenerateColumns="False"
-                AlternatingRowBackground="Orange"
                 CanUserAddRows="False"
                 CanUserDeleteRows="False"
                 CanUserSortColumns="True"
                 IsReadOnly="True"
                 ScrollViewer.CanContentScroll="True"                
-                BorderBrush="#000" 
                 ScrollViewer.HorizontalScrollBarVisibility="Visible"
                 ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,0,-17" Grid.RowSpan="2">
                 <DataGrid.Columns>
@@ -94,6 +92,18 @@
                     <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding  LoanDuration}"/>
                     <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Status}"/>
                 </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Status}" Value="Approved">
+                                <Setter Property="Background" Value="LightGreen"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Status}" Value="Rejected">
+                                <Setter Property="Background" Value="Red"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
             </DataGrid>
         </Grid>
         <Label Content="{Binding ApplyLoanModel.Warning,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"

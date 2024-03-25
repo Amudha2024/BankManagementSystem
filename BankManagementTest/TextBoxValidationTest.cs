@@ -91,7 +91,7 @@ namespace BankManagementTest
         [TestCase("02/28/1990")]
         public void FutureDateValidation_Pass_Test(string futureDate)
         {
-            bool res = textBlockValidation.DateValidation(futureDate);
+            bool res = DateValidation.DateValidationCheck(futureDate);
             Assert.IsFalse(res);
         }
 
@@ -100,7 +100,7 @@ namespace BankManagementTest
         [TestCase("02/02/5029")]
         public void FutureDateValidation_Fail_Test(string futureDate)
         {
-            bool res = textBlockValidation.DateValidation(futureDate);
+            bool res = DateValidation.DateValidationCheck(futureDate);
             Assert.IsTrue(res);
         }
 
@@ -109,7 +109,7 @@ namespace BankManagementTest
         [TestCase("02/28/1990")]
         public void AgeGreaterThan18_Pass_Test(string date)
         {
-            bool res = textBlockValidation.AgeGreaterThan18(date);
+            bool res = DateValidation.AgeGreaterThan18(date);
             Assert.IsFalse(res);
         }
 
@@ -118,7 +118,7 @@ namespace BankManagementTest
         [TestCase("12/12/2022")]
         public void AgeGreaterThan18_Fail_Test(string date)
         {
-            bool res = textBlockValidation.AgeGreaterThan18(date);
+            bool res = DateValidation.AgeGreaterThan18(date);
             Assert.IsTrue(res);
         }
     }

@@ -75,6 +75,15 @@
                     <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding LoanDuration}"/>
                     <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Status}"/>
                 </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Status}" Value="Pending">
+                                <Setter Property="Background" Value="Orange"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
             </DataGrid>
         </Grid>
         <Separator Style="{StaticResource SepratorStyle}" Margin="0,30"/>

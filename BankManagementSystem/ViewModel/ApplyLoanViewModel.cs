@@ -145,7 +145,7 @@ namespace BankManagementSystem.ViewModel
                 applyLoanModel.Warning = "All Fields are mandatory";
                 return false;
             }
-            if (textBoxValidation.DateValidation(applyLoanModel.LoanDate))
+            if (DateValidation.DateValidationCheck(applyLoanModel.LoanDate))
             {
                 applyLoanModel.Warning = "No Future Dates.Please Select the Current date";
                 return false;
